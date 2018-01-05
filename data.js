@@ -3,7 +3,7 @@
  */
 
 
-                             /* GLOBAL VARIALBES */
+/* GLOBAL VARIALBES */
 
 // temporary variable for username, used for filtering purposes
 var username;
@@ -14,7 +14,7 @@ var booktitle;
 // temporary varialbe for note id, used for filtering purposes
 var noteID;
 
-                             /* UTILITY FUNCTIONS */
+/* UTILITY FUNCTIONS */
 
 // Utility function used to filter array by usrname
 function findByUsername(element) {
@@ -44,7 +44,7 @@ function validateUsername(userName) {
     // If current username is not in local storage
     // then an error occured; maybe someone changed the local storage value
     // so check that value
-    var users_storage = localStorage.getItem("users_storage");
+    var users_storage = JSON.parse(localStorage.getItem("users_storage"));
     var currentUserNameCheck = users_storage.find(findByUsername);
     if (userName == currentUserNameCheck) {
         validated = true;
@@ -54,7 +54,7 @@ function validateUsername(userName) {
     return validated;
 }
 
-                             /* USER IDENTITY DATA */
+/* USER IDENTITY DATA */
 
 /* Returns the username of the currently logged in user */
 function getCurrentUser() {
@@ -86,7 +86,7 @@ function setCurrentUser(userName) {
 }
 
 
-                             /* NOTES DATA */
+/* NOTES DATA */
 
 /*
     returns from localStorage an array the notes of a user 
@@ -96,7 +96,7 @@ function getNotes(userName) {
 
     // validated username and if valid then retrive the notes array, else return an empty array
     if (validateUsername(userName)) {
-        var notes = localStorage.getItem("notes");
+        var notes = JSON.parse( localStorage.getItem("notes"));
 
         // set username variable to current username
         username = userName;
@@ -140,17 +140,16 @@ function setNote(note, userName = getCurrentUser()) {
     // Check if note id already exists
     noteID = note.id;
     var index = userNotes.findIndex(findByID);
-    
+
     // if note doesn't exist then add it
     if (index == -1) {
 
         userNotes.push(note);
-    } 
+    }
     // if note already exists then replace the old version
     else {
         userNotes[index] = note;
     }
     // put notes back into storage
-    localStorage.setItem("notes") = userNotes;
+    localStorage.setItem("notes") = JSON.stringify( userNotes );
 }
-
