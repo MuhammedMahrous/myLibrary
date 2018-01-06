@@ -104,7 +104,7 @@ function getNotes(userName) {
         // retrives the object with username as speicified username
         var notesObj = notes.find(findByUsername);
 
-        userNotes = notesObj.username; // to retrive the array of notes not the obj of username AND array of notes
+        userNotes = notesObj.userNotes; // to retrive the array of notes not the obj of username AND array of notes
 
     } else {
         userNotes = [];
@@ -150,6 +150,31 @@ function setNote(note, userName = getCurrentUser()) {
     else {
         userNotes[index] = note;
     }
+
     // put notes back into storage
-    localStorage.setItem("notes") = JSON.stringify( userNotes );
+
+    // create a notes object with the right format { "username" : "CURRENTUSERNAME", "userNotes" : []}
+    var notesObj;
+    notesObj.username = userName;
+    notesObj.userNotes = userNotes;
+
+    var allUsersNotes = JSON.parse(localStorage.getItem("notes"));
+    // set username variable to current username
+    username = userName;
+
+    // find index of this user notes object if it exists
+    var currentUserNotesObj = allUsersNotes.findIndex(findByUsername);
+
+
+    // if notes object doesn't exist then add it
+    if (index == -1) {
+
+        allUsersNotes.push(notesObj);
+    }
+    // if notes object already exists then replace the old version
+    else {
+        allUsersNotes[currentUserNotesObj] = notesObj;
+    }
+
+    localStorage.setItem("notes") = JSON.stringify( allUsersNotes );
 }
