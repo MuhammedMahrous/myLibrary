@@ -34,7 +34,7 @@ function findByID(element) {
     Utility function used to validate username 
     return true if validated and false if not
 */
-function validateUsername(userName) {
+function validateUsername(userName = getCurrentUser()) {
     var validated;
 
     // set username variable to current user to be used when findByUsername() is called
@@ -44,8 +44,9 @@ function validateUsername(userName) {
     // If current username is not in local storage
     // then an error occured; maybe someone changed the local storage value
     // so check that value
-    var users_storage = JSON.parse(localStorage.getItem("users_storage"));
-    var currentUserNameCheck = users_storage.find(findByUsername);
+    var users_storage = JSON.parse(localStorage.getItem("user_storage"));
+    var currentUser = users_storage.find(findByUsername);
+    var currentUserNameCheck = currentUser.username;
     if (userName == currentUserNameCheck) {
         validated = true;
     } else {
@@ -91,19 +92,20 @@ function setCurrentUser(userName) {
 /*
     returns from localStorage an array the notes of a user 
  */
-function getNotes(userName) {
+function getNotes(userName = getCurrentUser()) {
     var userNotes;
 
     // validated username and if valid then retrive the notes array, else return an empty array
-    if (validateUsername(userName)) {
-        var notes = JSON.parse( localStorage.getItem("notes"));
+    var valid = validateUsername(userName);
+    var notes = JSON.parse(localStorage.getItem("notes"));
+
+    if (valid && notes) {
 
         // set username variable to current username
         username = userName;
 
         // retrives the object with username as speicified username
-        var notesObj = notes.find(findByUsername);
-
+        var notesObj = notes.find(findByUsername);        
         userNotes = notesObj.userNotes; // to retrive the array of notes not the obj of username AND array of notes
 
     } else {
@@ -114,7 +116,7 @@ function getNotes(userName) {
 
 /* returns from localStorage all the notes of a user for
  a specific book */
-function getNotes(bookTitle, userName = getCurrentUser()) {
+function getNotesByBookTitle(bookTitle, userName = getCurrentUser()) {
     var userNotes;
     userNotes = getNotes(userName);
 
@@ -154,11 +156,16 @@ function setNote(note, userName = getCurrentUser()) {
     // put notes back into storage
 
     // create a notes object with the right format { "username" : "CURRENTUSERNAME", "userNotes" : []}
-    var notesObj;
+    var notesObj = {};
     notesObj.username = userName;
     notesObj.userNotes = userNotes;
 
     var allUsersNotes = JSON.parse(localStorage.getItem("notes"));
+
+    // if array of notes doesn't exist yet, then create an empty
+    if (allUsersNotes == null)
+        allUsersNotes = [];
+
     // set username variable to current username
     username = userName;
 
@@ -176,9 +183,8 @@ function setNote(note, userName = getCurrentUser()) {
         allUsersNotes[currentUserNotesObj] = notesObj;
     }
 
-    localStorage.setItem("notes") = JSON.stringify( allUsersNotes );
+    localStorage.setItem("notes", JSON.stringify(allUsersNotes));
 }
-
 
 function createShlef(username,title ) {
   
