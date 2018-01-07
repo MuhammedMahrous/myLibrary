@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<Link rel=stylesheet href="css\notesstyle.css" type="text/css">
+<Link rel=stylesheet href="css\navBar.css" type="text/css">
+<html>
+	<head>
+		<title>Books Notes</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Online Library">
+		<meta name="keywords" content="html5,library,pdfReader">
+		<meta name="author" content="Dina Ghounem">
+		<script type="text/javascript" src="js\data.js"></script>        
+		<script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+		<script type="text/javascript" src="js\notesJavascript.js"></script>
+
+	</head>
+	
+	<body >
+		<div class="navMenu">
+			<ul>
+	  			<li><a class="active" href="#home">Home</a></li>
+	  			<li><a href="#news">Notes</a></li>
+	  			<li><div class="wrap">
+   					<div class="search">
+      					<input type="text" class="searchTerm" placeholder="What are you looking for?">
+     					<button type="submit" class="searchButton"/>
+   					</div>
+					</div>
+				</li>
+			</ul>
+		</div>	
+			<div id="newButton"> 
+				<div> <img id="btnNew" class="left" src="img\plus.png"/> </div>
+			</div>
+			<ul id="notes"/>
+	</body>
+
+	
+</html>

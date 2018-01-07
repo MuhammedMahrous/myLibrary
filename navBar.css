@@ -1,0 +1,60 @@
+.navMenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1a0000;
+    border-radius:5px;
+}
+
+.active {
+    background-color: #1a0000;
+}
+.navMenu li {
+    float: left;
+}
+
+.navMenu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navMenu li a:hover {
+    background-color: #660000;
+}
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #f7ddbb;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+}
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #f7ddbb;
+  background: #f7ddbb;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 6%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
