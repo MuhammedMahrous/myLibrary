@@ -34,7 +34,7 @@ function popUpNote(selectedText) {
     console.log("popUpNote");
     var modal = document.getElementById('noteModal');
     var text = document.getElementById('noteText');
-    text.value = selectedText;
+    text.value =(selectEvent.ctrlKey) ? (text.value+selectedText): selectedText;
     //selectedText='';
     if (selectedPageNumber == '') {
         var element = selectEvent.target.parentElement;
