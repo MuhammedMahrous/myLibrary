@@ -365,3 +365,12 @@ function deleteBook (username,shelfTitle, BookPath ) {
         return false;
 }
 
+function getCurrentBookTitle(){
+    return "path12356"
+}
+
+function setCurrentBookTitle(){
+    
+} 
+
+
