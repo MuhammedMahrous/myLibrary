@@ -170,22 +170,73 @@ function setNote(note, userName = getCurrentUser()) {
     username = userName;
 
     // find index of this user notes object if it exists
-    var currentUserNotesObj = allUsersNotes.findIndex(findByUsername);
+    var currentUserNotesObjIndex = allUsersNotes.findIndex(findByUsername);
 
 
     // if notes object doesn't exist then add it
-    if (index == -1) {
+    if (currentUserNotesObjIndex == -1) {
 
         allUsersNotes.push(notesObj);
     }
     // if notes object already exists then replace the old version
     else {
-        allUsersNotes[currentUserNotesObj] = notesObj;
+        allUsersNotes[currentUserNotesObjIndex] = notesObj;
     }
 
     localStorage.setItem("notes", JSON.stringify(allUsersNotes));
 }
 
+/* 
+    Remove a note by note id and username
+*/
+function deleteNoteById(noteid, userName = getCurrentUser()) {
+    var userNotes;
+
+    // get notes from storage
+    userNotes = getNotes(userName);
+
+    // Check if note already exists
+    noteID = noteid;
+    var index = userNotes.findIndex(findByID);
+
+    // if note already exists then replace delete it from array
+    if (index != -1) {
+
+        userNotes.splice(index,1);
+    }    
+
+    // put notes back into storage
+
+    // create a notes object with the right format { "username" : "CURRENTUSERNAME", "userNotes" : []}
+    var notesObj = {};
+    notesObj.username = userName;
+    notesObj.userNotes = userNotes;
+
+    var allUsersNotes = JSON.parse(localStorage.getItem("notes"));
+
+    // if array of notes doesn't exist yet, then create an empty
+    if (allUsersNotes == null)
+        allUsersNotes = [];
+
+    // set username variable to current username
+    username = userName;
+
+    // find index of this user notes object if it exists
+    var currentUserNotesObjIndex = allUsersNotes.findIndex(findByUsername);
+
+
+    // if notes object doesn't exist then add it
+    if (currentUserNotesObjIndex == -1) {
+
+        allUsersNotes.push(notesObj);
+    }
+    // if notes object already exists then replace the old version
+    else {
+        allUsersNotes[currentUserNotesObjIndex] = notesObj;
+    }
+
+    localStorage.setItem("notes", JSON.stringify(allUsersNotes));
+}
 function createShlef(username,title ) {
   
 
