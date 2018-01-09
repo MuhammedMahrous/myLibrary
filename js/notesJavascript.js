@@ -86,12 +86,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
 				"</div></li>");
 
 	var newNote = notes.find("li:last");
-	newNote.find("img").click(function () {
-		deleteNoteById(userName+creationDate); 
-        newNote.remove();
-		saveNotes();
-	});
-
+	
 	addNoteEvent(newNote);
 	if (bookTitle) {
 		newNote.find("textarea.book-name").val(bookTitle);
@@ -109,6 +104,11 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
 	if (cDate) {
 		newNote.find("textarea.creation-date").val(cDate);
 	}
+	newNote.find("img").click(function () {
+		deleteNoteById(newNote.find("div")[0].id); 
+        newNote.remove();
+		saveNotes();
+	});
 	saveNotes();
 }
 
