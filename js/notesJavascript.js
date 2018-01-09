@@ -10,6 +10,8 @@ function saveNotes() {
 		var title = $(e).find("textarea.note-title");
 		var content = $(e).find("textarea.note-content");
 		var cDate = $(e).find("textarea.creation-date");
+		var userName =  getCurrentUser();
+		var note_id = userName+cDate.val();
 		/* #ADDED-MAHROUS */
 		/* 
 			Instead of directly adding note to local storage, the data API is
@@ -17,7 +19,8 @@ function saveNotes() {
 
 		*/
 		setNote({
-			id: i,
+			id:note_id,
+			//Index: i,
 			bookTitle: bName.val(),
 			pageNo: pNo.val(),
 			noteTitle: title.val(),
@@ -68,24 +71,22 @@ function addNoteEvent(noteElement) {
 }
 
 function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) {
+	creationDate = new Date();
+	userName =  getCurrentUser();
 	if (!className) {
 		className = "colour" + Math.ceil(Math.random() * 3);
 	}
-	notes.append("<li><div id='noteid" + i + className + "'class='" + className + "'>" +
-		"<textarea class='book-name' placeholder='Book Name' maxlength='15'/>" +
-		"<textarea class='note-title' placeholder='Enter Title:' maxlength='10'/>" +
-		"<textarea class='note-content' placeholder='Your content here:'/>" +
-		"<textarea class='page-no' placeholder='pageNo' maxlength='3'/>" +
-		"<textarea class='creation-date' placeholder='creation date'maxlength='10'/>" +
-		"<img class='hide' src='img/Delete_Icon.png' height=30 width=30 />" +
-		"</div></li>");
+	notes.append("<li><div id='"+userName+creationDate+"'class='" + className + "'>" + 
+				"<textarea class='book-name' placeholder='Book Name' maxlength='15'/>" + 
+				"<textarea class='note-title' placeholder='Enter Title:' maxlength='10'/>" + 
+				"<textarea class='note-content' placeholder='Your content here:'/>" + 
+				"<textarea class='page-no' placeholder='pageNo' maxlength='3'/>" + 
+				"<textarea class='creation-date'disabled>"+creationDate+"</textarea>" + 
+				"<img class='hide' src='img/Delete_Icon.png' height=30 width=30 />" +	
+				"</div></li>");
 
 	var newNote = notes.find("li:last");
-	newNote.find("img").click(function () {
-		newNote.remove();
-		saveNotes();
-	});
-
+	
 	addNoteEvent(newNote);
 	if (bookTitle) {
 		newNote.find("textarea.book-name").val(bookTitle);
@@ -103,6 +104,11 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
 	if (cDate) {
 		newNote.find("textarea.creation-date").val(cDate);
 	}
+	newNote.find("img").click(function () {
+		deleteNoteById(newNote.find("div")[0].id); 
+        newNote.remove();
+		saveNotes();
+	});
 	saveNotes();
 }
 
