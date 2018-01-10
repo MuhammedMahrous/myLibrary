@@ -1,4 +1,4 @@
-var currentUser = "getCurrentUser()";
+var currentUser = getCurrentUser();
 
 //Get shelft from DB Temp now
 var shelfs = getShlefs(currentUser); //returns null at line 322
@@ -22,7 +22,7 @@ function fillShelfs() {
         document.getElementById("sh_" + shelf.title).onchange = handleFileSelect;
 
         shelf.books.forEach(book => { // Fill the shelfs with books 
-            var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + shelf.title + '</b></h4><button id="btnRem' + shelf.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + shelf.title + '" onclick="viewBook(this);">View</button></div></div>';
+            var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>';
             document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
         });
     }
