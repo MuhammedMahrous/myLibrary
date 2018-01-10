@@ -51,7 +51,7 @@ function handleFileSelect(evt) {
     if (evt.dataTransfer == undefined) {
 
         files = document.getElementById(shelfTitle).files;
-        shelfTitle.replace("btnNewBook", "sh_");
+        shelfTitle = shelfTitle.replace("btnNewBook", "");
 
     } else {
         files = evt.dataTransfer.files; // FileList object.sss
@@ -73,7 +73,7 @@ function handleFileSelect(evt) {
             "imgPath": "../img/book-image.png" // Path to the icon image representing the book in the view. Same Folder
         };
 
-        if (setBook(currentUser, shelfTitle, bookAdded)) { // RETURNS AN ERROR
+        if (setBook(currentUser, shelfTitle.replace("sh_", ""), bookAdded)) { // RETURNS AN ERROR
             //shelf.books.push(bookAdded); // add book to books array in the selected shelf if there is old books
             output += '<div id="bID' + bookAdded.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + bookAdded.title + '</b></h4><button id="btnRem' + bookAdded.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + bookAdded.title + '" onclick="viewBook(this);">View</button></div></div>';
 
@@ -102,10 +102,10 @@ function handleFileSelect(evt) {
         }*/
     }
     if (evt.dataTransfer == undefined) {
-        document.getElementById(shelfTitle).onchange = handleFileSelect;
-        document.getElementById(shelfTitle).innerHTML += output; //added new book item to the list
+        document.getElementById("sh_" + shelfTitle).onchange = handleFileSelect;
+        document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
     } else {
-        document.getElementById(shelfTitle).innerHTML += output; //added new book item to the list
+        document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
 
     }
 

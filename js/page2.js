@@ -14,16 +14,15 @@ function fillShelfs() {
                 "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
             return shelfDiv;
         });
-        	//Add listeners
-         	var dropZone = document.getElementById("sh_" + shelf.title);
-           	dropZone.addEventListener('dragover', handleDragOver);
-            dropZone.addEventListener('drop', handleFileSelect);
+        //Add listeners
+        var dropZone = document.getElementById("sh_" + shelf.title);
+        dropZone.addEventListener('dragover', handleDragOver);
+        dropZone.addEventListener('drop', handleFileSelect);
 
-            var inputBookBtn = document.getElementById("btnNewBook" + shelf.title);
-            inputBookBtn.addEventListener('change', handleFileSelect);
+        document.getElementById("sh_" + shelf.title).onchange = handleFileSelect;
 
         shelf.books.forEach(book => { // Fill the shelfs with books 
-            var output = '<div id="bID' + shelf.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + shelf.title + '</b></h4><button id="btnRem' + shelf.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + shelf.title + '" onclick="viewBook(this);">View</button></div></div>';
+            var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + shelf.title + '</b></h4><button id="btnRem' + shelf.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + shelf.title + '" onclick="viewBook(this);">View</button></div></div>';
             document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
         });
     }
