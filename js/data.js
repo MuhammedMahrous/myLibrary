@@ -306,12 +306,15 @@ function getShlef(username, title) {
 }
 
 function setBook(username, shelfTitle, book) {
-    
+
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
 
     if (allShelfs.length > 0) {
         var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
         if (userShelfIndex != -1) {
+            if (allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.filter(itemBook => itemBook.title == book.title).length > 0) {
+                return false;
+            }
             allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.push(book);
             localStorage.setItem('shelfs', JSON.stringify(allShelfs));
             return true;
