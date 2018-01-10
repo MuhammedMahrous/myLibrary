@@ -278,6 +278,7 @@ function createShlef(username, title) {
 
 function getShlefs(username) {
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
+    if(allShelfs != null){
     if (allShelfs.length > 0) {
         var userShelfs = allShelfs.filter(shelf => shelf.username == username);
         if (userShelfs.length > 0)
@@ -286,99 +287,8 @@ function getShlefs(username) {
             return false;
     } else
         return false;
-}
-
-function getShlef(username, title) {
-    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    if (allShelfs.length > 0) {
-        var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
-        if (userShelfIndex != -1) {
-            var shelf = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == title);
-            return shelf[0].books;
-        } else
-            return false;
-    } else
-        return false;
-}
-
-function setBook(username, shelfTitle, book) {
-    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    if (allShelfs.length > 0) {
-        var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
-        if (userShelfIndex != -1) {
-            allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.push(book);
-            localStorage.setItem('shelfs', JSON.stringify(allShelfs));
-            return true;
-        } else
-            return false;
-    } else
-        return false;
-}
-
-function deleteBook(username, shelfTitle, BookPath) {
-    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    if (allShelfs.length > 0) {
-        var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
-        if (userShelfIndex != -1) {
-            var books = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books;
-            var index = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.findIndex(book => book.filePath == BookPath);
-            books.splice(index, 1);
-            return true;
-        } else
-            return false;
-    } else
-        return false;
-}
-
-
-function createShlef(username, title) {
-
-
-    // create localStorage if it does not exist
-    if (!localStorage.getItem('shelfs')) {
-        localStorage.setItem('shelfs', JSON.stringify([{ "username": username, "userShelfs": [] }]));
     }
-
-    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
-
-
-    // create data for user for the first 
-    if (userShelfIndex == -1) {
-        allShelfs.push({ "username": username, "userShelfs": [] })
-        localStorage.setItem('shelfs', JSON.stringify(allShelfs));
-        userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
-    }
-
-    // check if shelf already exists
-    if (allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == title).length > 0) {
-        return false;
-    } else {
-        newShlef = {
-            "title": title,
-            "books": []
-        };
-        allShelfs[userShelfIndex].userShelfs.push(newShlef);
-
-        //update all shelfs data 
-        localStorage.setItem('shelfs', JSON.stringify(allShelfs));
-
-        return true;
-
-    }
-
-}
-
-function getShlefs(username) {
-    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    if (allShelfs.length > 0) {
-        var userShelfs = allShelfs.filter(shelf => shelf.username == username);
-        if (userShelfs.length > 0)
-            return userShelfs[0].userShelfs
-        else
-            return false;
-    } else
-        return false;
+    else return false;
 }
 
 function getShlef(username, title) {
