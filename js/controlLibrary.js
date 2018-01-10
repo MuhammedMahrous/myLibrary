@@ -132,7 +132,11 @@ function viewBook(objToView) {
 //function to remove book from view and list
 function removeBook(objToBeRemoved) {
     var removedBookTitle = objToBeRemoved.id.replace("btnRem", "");
-    if (deleteBook(currentUser, "sh_" + removedBookTitle, removedBookTitle)) { //NEED TO CHANGE IT LATER ON
+    var div = objToBeRemoved.parentNode.parentNode.parentNode; //get Parent div
+    //var $div = $('#' + objToBeRemoved.id).parents('div[class="shelfStyle"]').eq(0);
+    //var $div = objToBeRemoved.querySelector(".shelfStyle").closest(".near.ancestor");
+
+    if (deleteBook(currentUser, div.id, removedBookTitle)) { //NEED TO CHANGE IT LATER ON
         document.getElementById("bID" + removedBookTitle).remove();
     }
 
