@@ -123,7 +123,9 @@ function check_authourity(can_or_cannot) {
     if (can_or_cannot == "can") {
         //        alert("done");
         setCurrentUser(search_by_user)
-        window.location = "BooksNotes.html";
+        //window.location = "BooksNotes.html";
+     	window.location = "shelfs.html";
+           
     }
     if (can_or_cannot == "cannot") {
         //   alert("wrongpass");
