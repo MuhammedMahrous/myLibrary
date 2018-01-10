@@ -29,11 +29,10 @@ function findByBookTitle(element) {
 function findByID(element) {
     return element.id == noteID;
 }
-
 /* 
-    Utility function used to validate username 
-    return true if validated and false if not
-*/
+ Utility function used to validate username 
+ return true if validated and false if not
+ */
 function validateUsername(userName = getCurrentUser()) {
     var validated;
 
@@ -73,9 +72,9 @@ function getCurrentUser() {
 
 
 /* 
-    Sets the current username to logged in user
-    returns true if successfully set and false if not.
-*/
+ Sets the current username to logged in user
+ returns true if successfully set and false if not.
+ */
 
 function setCurrentUser(userName) {
     // Validation to prevent setting user to any random user
@@ -90,7 +89,7 @@ function setCurrentUser(userName) {
 /* NOTES DATA */
 
 /*
-    returns from localStorage an array the notes of a user 
+ returns from localStorage an array the notes of a user 
  */
 function getNotes(userName = getCurrentUser()) {
     var userNotes;
@@ -130,9 +129,9 @@ function getNotesByBookTitle(bookTitle, userName = getCurrentUser()) {
 }
 
 /* 
-    sets a note into account of a specific user
-    if note exists it will be overwritten
-*/
+ sets a note into account of a specific user
+ if note exists it will be overwritten
+ */
 function setNote(note, userName = getCurrentUser()) {
     var userNotes;
 
@@ -187,8 +186,8 @@ function setNote(note, userName = getCurrentUser()) {
 }
 
 /* 
-    Remove a note by note id and username
-*/
+ Remove a note by note id and username
+ */
 function deleteNoteById(noteid, userName = getCurrentUser()) {
     var userNotes;
 
@@ -202,8 +201,8 @@ function deleteNoteById(noteid, userName = getCurrentUser()) {
     // if note already exists then replace delete it from array
     if (index != -1) {
 
-        userNotes.splice(index,1);
-    }    
+        userNotes.splice(index, 1);
+    }
 
     // put notes back into storage
 
@@ -243,7 +242,7 @@ function createShlef(username, title) {
 
     // create localStorage if it does not exist
     if (!localStorage.getItem('shelfs')) {
-        localStorage.setItem('shelfs', JSON.stringify([{ "username": username, "userShelfs": [] }]));
+        localStorage.setItem('shelfs', JSON.stringify([{"username": username, "userShelfs": []}]));
     }
 
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
@@ -252,7 +251,7 @@ function createShlef(username, title) {
 
     // create data for user for the first 
     if (userShelfIndex == -1) {
-        allShelfs.push({ "username": username, "userShelfs": [] })
+        allShelfs.push({"username": username, "userShelfs": []})
         localStorage.setItem('shelfs', JSON.stringify(allShelfs));
         userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
     }
@@ -278,17 +277,19 @@ function createShlef(username, title) {
 
 function getShlefs(username) {
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
-    if(allShelfs != null){
-    if (allShelfs.length > 0) {
-        var userShelfs = allShelfs.filter(shelf => shelf.username == username);
-        if (userShelfs.length > 0)
-            return userShelfs[0].userShelfs
-        else
+
+    if (allShelfs != null) {
+        if (allShelfs.length > 0) {
+            var userShelfs = allShelfs.filter(shelf => shelf.username == username);
+            if (userShelfs.length > 0)
+                return userShelfs[0].userShelfs
+            else
+                return false;
+        } else
             return false;
-    } else
+    } else {
         return false;
     }
-    else return false;
 }
 
 function getShlef(username, title) {
@@ -305,7 +306,9 @@ function getShlef(username, title) {
 }
 
 function setBook(username, shelfTitle, book) {
+    
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
+
     if (allShelfs.length > 0) {
         var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
         if (userShelfIndex != -1) {
