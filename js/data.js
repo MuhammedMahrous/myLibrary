@@ -324,14 +324,28 @@ function setBook(username, shelfTitle, book) {
         return false;
 }
 
-function deleteBook(username, shelfTitle, BookPath) {
+function deleteShelf(username, shelfTitle) {
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
     if (allShelfs.length > 0) {
         var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
         if (userShelfIndex != -1) {
-            var books = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books;
-            var index = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.findIndex(book => book.filePath == BookPath);
-            books.splice(index, 1);
+            var shelfIndex = allShelfs[userShelfIndex].userShelfs.findIndex(shelf => shelf.title == shelfTitle);
+            allShelfs[userShelfIndex].userShelfs.splice(shelfIndex, 1);
+            localStorage.setItem('shelfs', JSON.stringify(allShelfs));
+            return true;
+        } else
+            return false;
+    } else
+        return false;
+}
+function deleteBook(username, shelfTitle, BookTitle) {
+    var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
+    if (allShelfs.length > 0) {
+        var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
+        if (userShelfIndex != -1) {
+            var bookIndex = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.findIndex(book => book.title == BookTitle);
+            allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.splice(bookIndex, 1);
+            localStorage.setItem('shelfs', JSON.stringify(allShelfs));
             return true;
         } else
             return false;
