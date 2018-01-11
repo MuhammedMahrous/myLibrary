@@ -19,11 +19,16 @@ function users(username, userpassword, useremail, userphone) {
 //(just as design)this function to show inputs of sign up and hidden the others
 function show_reg() {
     window_opened = "reg";
+    document.getElementById("login_status").style.display="none";
+    document.getElementById("login_status").innerHTML="";
+
 }
 
 //(just as design)this function uses to show the inputs of login and hidden the others
 function show_login() {
     window_opened = "login";
+
+
 }
 
 
@@ -67,12 +72,14 @@ function check_action() {
                 //parse convert from string into object or array 
                 users_array = JSON.parse(users_array);
             }
-
+          
             //push new object to the array with its values
             var obj_user = new users(username, password, email, phone);
             users_array.push(obj_user);
             //stringfy convert from 
             localStorage["user_storage"] = JSON.stringify(users_array);
+            setCurrentUser(username);
+
         } else {
             alert("userName Used before");
         }
@@ -102,12 +109,12 @@ function check_action() {
                     } else {
                         //user didn't exist in our system can't login  ##@@
                         check_authourity("cannot");
-                        break;
+                        
                     }
                 } else {
                     //user didn't exist in our system can't login  ##@@
                     check_authourity("notexistuserINstorage");
-                    break;
+                    
                 }
             }
         } else {
@@ -122,20 +129,29 @@ function check_action() {
 function check_authourity(can_or_cannot) {
     if (can_or_cannot == "can") {
         //        alert("done");
-        setCurrentUser(search_by_user)
+        setCurrentUser(search_by_user);
         //window.location = "BooksNotes.html";
      	window.location = "shelfs.html";
            
     }
     if (can_or_cannot == "cannot") {
-        //   alert("wrongpass");
+         // alert("wrongpass");
+         document.getElementById("login_status").style.display="block";
+         document.getElementById("login_status").innerHTML="Invalid Password";
+         document.getElementById("login_status").style.color="red";
     }
     if (can_or_cannot == "notexist") {
         // alert("notexist_emptyStorage");
+        document.getElementById("login_status").style.display="block";
+         document.getElementById("login_status").innerHTML="You Must SignUp First";
+         document.getElementById("login_status").style.color="red";
     }
 
     if (can_or_cannot == "notexistuserINstorage") {
         //alert("notexistuser_INstorage");
+        document.getElementById("login_status").style.display="block";
+        document.getElementById("login_status").innerHTML="Invalid UserName";
+        document.getElementById("login_status").style.color="red";
     }
 
 }
