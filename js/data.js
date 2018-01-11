@@ -44,22 +44,29 @@ function validateUsername(userName = getCurrentUser()) {
     // then an error occured; maybe someone changed the local storage value
     // so check that value
     var users_storage = JSON.parse(localStorage.getItem("user_storage"));
-    var currentUser = users_storage.find(findByUsername);
-
-    // checks if current user is not even intialized
-    if( currentUser == undefined )
+    if ( users_storage == undefined )
     {
-        validated = false;        
+        validated = false;
     }
     else
     {
-        var currentUserNameCheck = currentUser.username;
-        if (userName == currentUserNameCheck) {
-            validated = true;
-        } else {
-            validated = false;
+    
+        var currentUser = users_storage.find(findByUsername);
+        // checks if current user is not even intialized
+        if( currentUser == undefined )
+        {
+            validated = false;        
         }
-
+        else
+        {
+            var currentUserNameCheck = currentUser.username;
+            if (userName == currentUserNameCheck) {
+                validated = true;
+            } else {
+                validated = false;
+            }
+    
+        }
     }
     return validated;
 }
