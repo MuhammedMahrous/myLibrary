@@ -1,12 +1,12 @@
-    /*var parameters = location.search.substring(1).split("&"); // get the book and page name from the URL
+    var parameters = location.search.substring(1).split("&"); // get the book and page name from the URL
 
                 var temp = parameters[0].split("=");
-                bookName = unescape(temp[1]) + ".pdf";
+                bookName = "../Books/" + unescape(temp[1]) + ".pdf";
                 temp = parameters[1].split("=");
-                pageNumber = unescape(temp[1]);*/
+                pageNumber = unescape(temp[1]);
 
-    bookName = "OCA.pdf"; //Temp value for the book name
-    pageNumber = 5; //Temp value for the page number
+    //bookName = "../Books/formale.pdf"; //Temp value for the book name
+    //pageNumber = 1; //Temp value for the page number
 
     //When loaded content open the book
     document.addEventListener("DOMContentLoaded", function() {

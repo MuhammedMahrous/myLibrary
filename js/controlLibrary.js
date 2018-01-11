@@ -125,7 +125,7 @@ function handleFileSelect(evt) {
 function viewBook(objToView) {
     var viewedBookTitle = escape(objToView.id.replace("btnView", "")); //get book title
     //open the viewer page with page 1 and book title
-    window.location = 'pdfjs-1.9.426-dist/web/viewer.html?bookName=' + viewedBookTitle + '&bookPage=1';
+    window.location = '../web/viewer.html?bookName=' + viewedBookTitle + '&bookPage=1';
 
 }
 
