@@ -45,11 +45,21 @@ function validateUsername(userName = getCurrentUser()) {
     // so check that value
     var users_storage = JSON.parse(localStorage.getItem("user_storage"));
     var currentUser = users_storage.find(findByUsername);
-    var currentUserNameCheck = currentUser.username;
-    if (userName == currentUserNameCheck) {
-        validated = true;
-    } else {
-        validated = false;
+
+    // checks if current user is not even intialized
+    if( currentUser == undefined )
+    {
+        validated = false;        
+    }
+    else
+    {
+        var currentUserNameCheck = currentUser.username;
+        if (userName == currentUserNameCheck) {
+            validated = true;
+        } else {
+            validated = false;
+        }
+
     }
     return validated;
 }
@@ -62,7 +72,8 @@ function getCurrentUser() {
 
     // get Current user from local sotrage
     var currentUserName = localStorage.getItem("currentUser");
-    if (!validateUsername(currentUserName)) {
+    var validated = validateUsername();
+    if (!validated) {
         setCurrentUser("");
         currentUserName = "";
     }
@@ -236,7 +247,6 @@ function deleteNoteById(noteid, userName = getCurrentUser()) {
 
     localStorage.setItem("notes", JSON.stringify(allUsersNotes));
 }
-
 function createShlef(username, title) {
 
 
@@ -343,7 +353,7 @@ function deleteBook(username, shelfTitle, BookTitle) {
     if (allShelfs.length > 0) {
         var userShelfIndex = allShelfs.findIndex(shelf => shelf.username == username);
         if (userShelfIndex != -1) {
-            var bookIndex = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.findIndex(book => book.title == BookTitle);
+            var bookIndex = allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)         [0].books.findIndex(book => book.title == BookTitle);
             allShelfs[userShelfIndex].userShelfs.filter(shelf => shelf.title == shelfTitle)[0].books.splice(bookIndex, 1);
             localStorage.setItem('shelfs', JSON.stringify(allShelfs));
             return true;
