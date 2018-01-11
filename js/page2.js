@@ -78,7 +78,11 @@ function removeshelf(opj) {
     var btn_id = opj.id;
     var div_id = "sh_" + btn_id;
     //REMOVE FROM DB FIRST
-    document.getElementById(div_id).remove();
+    if(deleteShelf(currentUser, btn_id)){
+	    document.getElementById(div_id).remove();
+    }else{
+    	alert("Shelf not removed");
+    }
 }
 
 

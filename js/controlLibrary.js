@@ -136,7 +136,7 @@ function removeBook(objToBeRemoved) {
     //var $div = $('#' + objToBeRemoved.id).parents('div[class="shelfStyle"]').eq(0);
     //var $div = objToBeRemoved.querySelector(".shelfStyle").closest(".near.ancestor");
 
-    if (deleteBook(currentUser, div.id, removedBookTitle)) { //NEED TO CHANGE IT LATER ON
+    if (deleteBook(currentUser, div.id.replace("sh_", ""), removedBookTitle)) { //NEED TO CHANGE IT LATER ON
         document.getElementById("bID" + removedBookTitle).remove();
     }
 
