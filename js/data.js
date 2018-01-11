@@ -72,7 +72,8 @@ function getCurrentUser() {
 
     // get Current user from local sotrage
     var currentUserName = localStorage.getItem("currentUser");
-    if (!validateUsername(currentUserName)) {
+    var validated = validateUsername();
+    if (!validated) {
         setCurrentUser("");
         currentUserName = "";
     }
