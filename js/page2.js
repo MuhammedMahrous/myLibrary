@@ -4,6 +4,7 @@ var currentUser = getCurrentUser();
 var shelfs = getShlefs(currentUser); //returns null at line 322
 //DRAW SHELFS
 function fillShelfs() {
+	if(validateUsername()){ 
     for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
         var shelf = shelfs[index];
         $("#shelfsContainer").append(function(n) {
@@ -26,6 +27,9 @@ function fillShelfs() {
             document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
         });
     }
+}else{
+	window.location = "index.html";
+}
 }
 
 //Shows the note creation

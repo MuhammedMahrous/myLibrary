@@ -146,6 +146,12 @@ function loadNotes() {
 	/* #COMMENTED-MAHROUS */
 }
 $(document).ready(function () {
+    var validated = validateUsername();
+    if ( !validated )
+    {
+        window.location = "index.html";
+    }
+
 	// get references to the 'notes' list
 	notes = $("#notes");
 	// load notes from local storage if one's available
