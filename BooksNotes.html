@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <Link rel=stylesheet href="css\notesstyle.css" type="text/css">
 <Link rel=stylesheet href="css\navBar.css" type="text/css">
+<link rel="stylesheet" href="css\font-awesome\css\font-awesome.min.css" <html>
 
+<<<<<<< HEAD
+<head>
+    <title>Books Notes</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Online Library">
+    <meta name="keywords" content="html5,library,pdfReader">
+    <meta name="author" content="Dina Ghounem">
+    <script type="text/javascript" src="js\data.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="js\displayMenu.js"></script>
+    <script type="text/javascript" src="js\notesJavascript.js"></script>
+</head>
+=======
 <html>
 	<head>
 		<title>Books Notes</title>
@@ -42,6 +57,42 @@
 			</div>
 		</div>
 	</body>
+>>>>>>> dd4d516926436b51371310ae37281c771982585e
 
-	
+<body>
+    <div class="bachgroundLayer">
+        <div class="button_container" id="toggle" onclick="displayButton(this)">
+            <span class="top"></span>
+            <span class="middle"></span>
+            <span class="bottom"></span>
+        </div>
+        <div class="overlay" id="overlay">
+            <nav class="overlay-menu">
+                <ul>
+                    <li><a href="shelfs.html">Library</a></li>
+                    <li><a href="BooksNotes.html">Notes</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">About As</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="search-container">
+
+            <div id="sb-search" class="sb-search ">
+                <form>
+                    <input class="sb-search-input " onkeyup="buttonUp();" placeholder="Note title to search" onblur="monkey();" type="search" value="" name="search" id="search">
+                    <input class="sb-search-submit" type="submit" value="">
+                    <span class="sb-icon-search"><i class="fa fa-search"></i></span>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+
+            <ul id="notes" />
+        </div>
+    </div>
+</body>
+
+
 </html>
