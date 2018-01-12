@@ -105,7 +105,7 @@ function check_action() {
                     if (get_users_storage[init_val].userpassword == search_by_pass) {
                         //user already exist in our system can login ##@@
                         check_authourity("can");
-                        break;
+                       
                     } else {
                         //user didn't exist in our system can't login  ##@@
                         check_authourity("cannot");
@@ -132,22 +132,22 @@ function check_authourity(can_or_cannot) {
         setCurrentUser(search_by_user);
         //window.location = "BooksNotes.html";
      	window.location = "shelfs.html";
-           
+        
     }
-    if (can_or_cannot == "cannot") {
+    else if (can_or_cannot == "cannot") {
          // alert("wrongpass");
          document.getElementById("login_status").style.display="block";
          document.getElementById("login_status").innerHTML="Invalid Password";
          document.getElementById("login_status").style.color="red";
     }
-    if (can_or_cannot == "notexist") {
+    else if (can_or_cannot == "notexist") {
         // alert("notexist_emptyStorage");
         document.getElementById("login_status").style.display="block";
          document.getElementById("login_status").innerHTML="You Must SignUp First";
          document.getElementById("login_status").style.color="red";
     }
 
-    if (can_or_cannot == "notexistuserINstorage") {
+    else if (can_or_cannot == "notexistuserINstorage") {
         //alert("notexistuser_INstorage");
         document.getElementById("login_status").style.display="block";
         document.getElementById("login_status").innerHTML="Invalid UserName";

@@ -1,5 +1,14 @@
 var currentUser = getCurrentUser();
 
+//logout function related with log_out_btn
+function log_out_btn()
+{
+    var empty="yggygygygyggy";
+    setCurrentUser(empty);
+    alert(empty);
+}
+
+
 //Get shelft from DB Temp now
 var shelfs = getShlefs(currentUser); //returns null at line 322
 //DRAW SHELFS
