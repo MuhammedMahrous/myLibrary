@@ -112,6 +112,7 @@ function setCurrentUser(userName) {
 function deleteCurrentUser() {
 
     localStorage.removeItem("currentUser");
+    window.location = "index.html";
 }
 
 /* NOTES DATA */
