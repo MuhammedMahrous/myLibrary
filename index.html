@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <meta charset="utf-8" />
         <title>LogIn</title>
-        <link rel="icon" href="css/Open_Book-512.png" >
+        <link rel="icon" href="img/Open_Book-512.png" >
   </head>
   <body>
 
@@ -28,13 +28,14 @@
             <div class="group">
               <label for="userpassword_log" class="label">Password</label>
               <input id="userpassword_log" type="password" class="input" data-type="password" required  >
+			  <label id="login_status" class"label"></label>
             </div>
             <div hidden class="group">
               <input id="check" type="checkbox" class="check" checked="">
               <label for="check"><span class="icon"></span> Keep me Signed in</label>
             </div>
             <div class="group">
-              <input onclick="show_login();check_action()"  class="button" value="Sign In">
+              <input type="button" onclick="show_login();check_action()"  class="button" value="Sign In">
             </div>
             <div class="hr"></div>
             <div  class="foot-lnk">
@@ -45,15 +46,15 @@
 
 
           <div  id="reg_div"  class="sign-up-htm" >
-            <form onsubmit="check_action()" >
+            <form action="shelfs.html" onsubmit="check_action()" >
              <div class="group">
                <label class="label">username</label>
-               <input class="input"  id="username" type="text" placeholder="username"  required pattern="^[A-Za-z]{3,}" title="Must contain at least 3 or more characters">
+               <input class="input"  id="username" type="text" placeholder="username"  required pattern="[a-zA-Z].{0,}" title="just keep use a letter in the begining a to z">
 
              </div>
              <div class="group">
                <label class="label">password</label>
-               <input class="input"  id="userpassword" type="password" placeholder="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters">
+               <input class="input"  id="userpassword" type="password" placeholder="password" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters">
              </div>
              <div class="group">
                
@@ -78,7 +79,7 @@
     </div>
 
       
-
+<!-- add comment to test git -->
 
   </body>
 </html> 

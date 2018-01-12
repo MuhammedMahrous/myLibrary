@@ -71,7 +71,8 @@ function addNoteEvent(noteElement) {
 }
 
 function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) {
-	creationDate = new Date();
+	mydate = new Date();
+	creationDate = mydate.toISOString();
 	userName =  getCurrentUser();
 	if (!className) {
 		className = "colour" + Math.ceil(Math.random() * 3);
@@ -81,7 +82,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
 				"<textarea class='note-title' placeholder='Enter Title:' maxlength='10'/>" + 
 				"<textarea class='note-content' placeholder='Your content here:'/>" + 
 				"<textarea class='page-no' placeholder='pageNo' maxlength='3'/>" + 
-				"<textarea class='creation-date'disabled>"+creationDate+"</textarea>" + 
+				"<textarea class='creation-date'disabled>"+mydate+"</textarea>" + 
 				"<img class='hide' src='img/Delete_Icon.png' height=30 width=30 />" +	
 				"</div></li>");
 
@@ -144,22 +145,16 @@ function loadNotes() {
 	//}
 	/* #COMMENTED-MAHROUS */
 }
-
-
 $(document).ready(function () {
-		/*if(validateUsername()
-		{
-			
-			window.location = "index.html";
-		}*/
-		// get references to the 'notes' list
-		notes = $("#notes");
-		// load notes from local storage if one's available
-		loadNotes();
-		/* #COMMENTED-MAHROUS */
-		// add a note to the list if there aren't any
-		//	if (count === 0) {
-		//		$("#btnNew").click();
-		//	}
-		/* #COMMENTED-MAHROUS */
+    var validated = validateUsername();
+    if ( !validated )
+    {
+        window.location = "index.html";
+    }
+
+	// get references to the 'notes' list
+	notes = $("#notes");
+	// load notes from local storage if one's available
+	loadNotes();
+	// clicking the 'New Note' button adds a new note to the list
 });
