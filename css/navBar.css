@@ -121,6 +121,7 @@ h1 {
   opacity: .9;
   visibility: visible;
   height: 100%;
+  z-index: 10;
 }
 .overlay.open li {
   -webkit-animation: fadeInRight .5s ease forwards;
