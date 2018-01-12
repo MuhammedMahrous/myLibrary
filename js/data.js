@@ -103,6 +103,17 @@ function setCurrentUser(userName) {
 }
 
 
+/*
+
+    deletes currentUser from local storage so becareful with it
+*/
+
+
+function deleteCurrentUser() {
+
+    localStorage.removeItem("currentUser");
+}
+
 /* NOTES DATA */
 
 /*
