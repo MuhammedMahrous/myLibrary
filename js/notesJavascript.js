@@ -71,6 +71,7 @@ function addNoteEvent(noteElement) {
 }
 
 function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) {
+<<<<<<< HEAD
     mydate = new Date();
     creationDate = mydate.toISOString();
     userName = getCurrentUser();
@@ -107,6 +108,44 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
     }
     newNote.find("img").click(function() {
         deleteNoteById(newNote.find("div")[0].id);
+=======
+	mydate = new Date();
+	creationDate = mydate.toISOString();
+	userName =  getCurrentUser();
+	if (!className) {
+		className = "colour" + Math.ceil(Math.random() * 3);
+	}
+	notes.append("<li><div id='"+userName+creationDate+"'class='" + className + "'>" + 
+				"<textarea class='book-name' placeholder='Book Name' maxlength='15' disabled/>" + 
+				"<textarea class='note-title' placeholder='Enter Title:' maxlength='10' disabled/>" + 
+				"<textarea class='note-content' placeholder='Your content here:'/>" + 
+				"<textarea class='page-no' placeholder='pageNo' maxlength='3' disabled/>" + 
+				"<textarea class='creation-date'disabled>"+creationDate+"</textarea>" + 
+				"<img class='hide' src='img/Delete_Icon.png' height=20 width=20 />" +	
+				"</div></li>");
+
+	var newNote = notes.find("li:last");
+	
+	addNoteEvent(newNote);
+	if (bookTitle) {
+		newNote.find("textarea.book-name").val(bookTitle);
+	}
+	if (noteTitle) {
+		newNote.find("textarea.note-title").val(noteTitle);
+	}
+	if (content) {
+		j
+		newNote.find("textarea.note-content").val(content);
+	}
+	if (pageNo) {
+		newNote.find("textarea.page-no").val(pageNo);
+	}
+	if (cDate) {
+		newNote.find("textarea.creation-date").val(cDate);
+	}
+	newNote.find("img").click(function () {
+		deleteNoteById(newNote.find("div")[0].id); 
+>>>>>>> dd4d516926436b51371310ae37281c771982585e
         newNote.remove();
         saveNotes();
     });
