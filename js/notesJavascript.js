@@ -144,21 +144,22 @@ function loadNotes() {
 	//}
 	/* #COMMENTED-MAHROUS */
 }
+
+
 $(document).ready(function () {
-	// get references to the 'notes' list
-	notes = $("#notes");
-	// load notes from local storage if one's available
-	loadNotes();
-	// clicking the 'New Note' button adds a new note to the list
-	$("#btnNew").click(function () {
-		addNewNote();
-	});
-
-	/* #COMMENTED-MAHROUS */
-	// add a note to the list if there aren't any
-	//	if (count === 0) {
-	//		$("#btnNew").click();
-	//	}
-	/* #COMMENTED-MAHROUS */
-
+		/*if(validateUsername()
+		{
+			
+			window.location = "index.html";
+		}*/
+		// get references to the 'notes' list
+		notes = $("#notes");
+		// load notes from local storage if one's available
+		loadNotes();
+		/* #COMMENTED-MAHROUS */
+		// add a note to the list if there aren't any
+		//	if (count === 0) {
+		//		$("#btnNew").click();
+		//	}
+		/* #COMMENTED-MAHROUS */
 });
