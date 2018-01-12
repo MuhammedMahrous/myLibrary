@@ -134,8 +134,16 @@ function getNotes(userName = getCurrentUser()) {
 
         // retrives the object with username as speicified username
         var notesObj = notes.find(findByUsername);
-        userNotes = notesObj.userNotes; // to retrive the array of notes not the obj of username AND array of notes
-
+        
+        // if user has no notes array then set empty notes for him
+        if ( notesObj == undefined )
+        {
+            userNotes = [];        
+        }
+        else
+        {
+            userNotes = notesObj.userNotes; // to retrive the array of notes not the obj of username AND array of notes
+        }
     } else {
         userNotes = [];
     }
