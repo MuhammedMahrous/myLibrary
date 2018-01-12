@@ -1,5 +1,5 @@
 var currentUser = getCurrentUser();
-
+var shelfs = getShlefs(currentUser);
 //logout function related with log_out_btn
 function log_out_btn() {
     var empty = "yggygygygyggy";
@@ -9,8 +9,18 @@ function log_out_btn() {
 
 
 //Get shelft from DB Temp now
-var shelfs = getShlefs(currentUser); //returns null at line 322
+ //returns null at line 322
+
+function checkShelfs (currentUser)
+{
+			var msg="No Shelfes Created";
+			if(!shelfs)
+				document.getElementById("p2").innerHTML=msg;
+	
+}
+
 //DRAW SHELFS
+
 function fillShelfs() {
     if (validateUsername()) {
         for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
@@ -78,11 +88,15 @@ function addshelf() {
 
             var inputBookBtn = document.getElementById("btnNewBook" + title);
             inputBookBtn.addEventListener('change', handleFileSelect);
-        } else {
-            alert("title exist before");
+       } else {
+			var msg="title exist before";
+            //alert("title exist before");
+			dialog();
         }
     } else {
-        alert("title cannot be empty");
+		var msg="title cannot be empty";
+      dialog(msg);
+	   //alert("title cannot be empty");
     }
 
 }
@@ -95,14 +109,46 @@ function removeshelf(opj) {
     if (deleteShelf(currentUser, btn_id)) {
         document.getElementById(div_id).remove();
     } else {
-        alert("Shelf not removed");
+     var msg="Shelf not removed";
+		dialog();
+    	//alert("Shelf not removed");
     }
 }
+
+// Get the modal
+
+
+// When the user clicks the button, open the modal 
+ function dialog ( msg ) {
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+document.getElementById("msg").innerHTML= msg;
+
+ modal.style.display = "block";
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+ }}
 
 
 
 $(document).ready(function() {
-
+     checkShelfs();
     $('.trigger').click(function() {
         $('.modal-wrapper').toggleClass('open');
         $('.page-wrapper').toggleClass('blur');
