@@ -87,11 +87,11 @@ function saveNote() {
     selectedText = '';
     var modal = document.getElementById('noteModal');
     var date =  Date.now();
-    var id = "getCurrentUser()"+date;
+    var id = getCurrentUser()+date;
     var finalNoteText = document.getElementById('noteText').value;
     var noteTitle = document.getElementById('noteTitle').value;
     var bookTitle= getCurrentBookTitle();
-    noteCreater = "getCurrentUser()";
+    noteCreater = getCurrentUser();
     noteObj={
         "id":id,
         "bookTitle":bookTitle,
