@@ -16,12 +16,38 @@
 </head>
 
 <body onload="fillShelfs()">
+<<<<<<< HEAD
     <button id="show">Add shelf</button>
 	<button onclick="deleteCurrentUser()" class="log_out_btn">Logout</button>
 
     <div id="creationContainer"></div>
     <div id="shelfsContainer"></div>
 
+=======
+   
+    <div class="page-wrapper">
+
+        <div id="creationContainer"></div>
+        <div id="shelfsContainer"></div>
+
+        <a class="new-shelf-button trigger" href="javascript:;" id="show"><span>+</span></a>
+
+    </div>
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="head">
+                <p class="modal-title-text">Create a shelf</p>
+                <a class="btn-close trigger" href="javascript:;"></a>
+            </div>
+            <div class="content">
+                <label for="new-shelf-input">Shelf Name:</label>
+                <input id="new-shelf-input" type="text">
+                <a class="btn saveShelf" href="javascript:;" id="show">Save</a>
+            </div>
+        </div>
+    </div>
+    
+>>>>>>> 0e376c5b1293a48823d34b9051019d8f65137d18
     <script src="js/controlLibrary.js"></script>
 
 </body>

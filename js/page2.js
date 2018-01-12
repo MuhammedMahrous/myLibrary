@@ -1,9 +1,8 @@
 var currentUser = getCurrentUser();
 
 //logout function related with log_out_btn
-function log_out_btn()
-{
-    var empty="yggygygygyggy";
+function log_out_btn() {
+    var empty = "yggygygygyggy";
     setCurrentUser(empty);
     alert(empty);
 }
@@ -13,36 +12,36 @@ function log_out_btn()
 var shelfs = getShlefs(currentUser); //returns null at line 322
 //DRAW SHELFS
 function fillShelfs() {
-	if(validateUsername()){ 
-    for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
-        var shelf = shelfs[index];
-        $("#shelfsContainer").append(function(n) {
+    if (validateUsername()) {
+        for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
+            var shelf = shelfs[index];
+            $("#shelfsContainer").append(function(n) {
 
 
-            $("#containerDiv").remove(); //get all the elemnt to delete it
-            var shelfDiv = "<div class='shelfStyle' id='sh_" + shelf.title + "'><text>' " + shelf.title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + shelf.title + "' type='file' name='New Book'><br><br>" +
-                "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
-            return shelfDiv;
-        });
-        //Add listeners
-        var dropZone = document.getElementById("sh_" + shelf.title);
-        dropZone.addEventListener('dragover', handleDragOver);
-        dropZone.addEventListener('drop', handleFileSelect);
+                $("#containerDiv").remove(); //get all the elemnt to delete it
+                var shelfDiv = "<div class='shelfStyle' id='sh_" + shelf.title + "'><text>' " + shelf.title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + shelf.title + "' type='file' name='New Book'><br><br>" +
+                    "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
+                return shelfDiv;
+            });
+            //Add listeners
+            var dropZone = document.getElementById("sh_" + shelf.title);
+            dropZone.addEventListener('dragover', handleDragOver);
+            dropZone.addEventListener('drop', handleFileSelect);
 
-        document.getElementById("sh_" + shelf.title).onchange = handleFileSelect;
+            document.getElementById("sh_" + shelf.title).onchange = handleFileSelect;
 
-        shelf.books.forEach(book => { // Fill the shelfs with books 
-            var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>';
-            document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
-        });
+            shelf.books.forEach(book => { // Fill the shelfs with books 
+                var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>';
+                document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
+            });
+        }
+    } else {
+        window.location = "index.html";
     }
-}else{
-	window.location = "index.html";
-}
 }
 
 //Shows the note creation
-function addtitle() {
+/*function addtitle() {
     //if ($("li".length = 0)) { //Only create on shlef at a time
     $("#creationContainer").append(function(n) {
         var note = "<div id='containerDiv' class='addShelfReq'><textarea class='note-title' id='t1' placeholder='title' maxlength='50'></textarea><br>" +
@@ -52,10 +51,10 @@ function addtitle() {
     });
 
     //}
-}
+}*/
 
 function addshelf() {
-    var title = document.getElementById('t1').value;
+    var title = document.getElementById('new-shelf-input').value;
     //CHECK NOT EMPTY
     if (title != "") {
         //CHECK THE TITLE IS UNIQUE
@@ -64,7 +63,9 @@ function addshelf() {
             $("#shelfsContainer").append(function(n) {
 
 
-                $("#containerDiv").remove(); //get all the li elemnts to delete it
+                $('.modal-wrapper').toggleClass('open'); //hide the modal
+                $('.page-wrapper').toggleClass('blur'); //remove the blur
+
                 var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
                     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
                 return shelf;
@@ -91,10 +92,10 @@ function removeshelf(opj) {
     var btn_id = opj.id;
     var div_id = "sh_" + btn_id;
     //REMOVE FROM DB FIRST
-    if(deleteShelf(currentUser, btn_id)){
-	    document.getElementById(div_id).remove();
-    }else{
-    	alert("Shelf not removed");
+    if (deleteShelf(currentUser, btn_id)) {
+        document.getElementById(div_id).remove();
+    } else {
+        alert("Shelf not removed");
     }
 }
 
@@ -102,8 +103,16 @@ function removeshelf(opj) {
 
 $(document).ready(function() {
 
+    $('.trigger').click(function() {
+        $('.modal-wrapper').toggleClass('open');
+        $('.page-wrapper').toggleClass('blur');
+        $('#new-shelf-input').val("");
+        return false;
+    });
 
-    $("#show").click(function() {
+    $('.saveShelf').click(addshelf);
+
+    /*$("#show").click(function() {
 
         addtitle();
 
@@ -117,5 +126,5 @@ $(document).ready(function() {
 
         });
 
-    });
+    });*/
 });

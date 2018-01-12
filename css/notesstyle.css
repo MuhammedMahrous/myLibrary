@@ -1,81 +1,77 @@
 body{
-	
 	font-size: 100%;
-    margin: 15px;
-    background:radial-gradient(#800000, #660000, #330000);
-	font-family: verdana, arial, sans-serif;
-}
-#newButton img{
-	width: 70px;
-    height: 70px;
-    background: rgba(0, 0, 0, 0);
-	
-}
-
-#newButton img:hover, #controls img:focus {
-	-webkit-transform: scale(1.2);  
-  	-moz-transform: scale(1.2);  
-  	-o-transform: scale(1.2);  
-  	position:relative;
 }
 #notes ,li {
 	list-style: none;
 }
-
-#notes  {
+#notes {
 	overflow: hidden;
-	padding: 15px;
+	padding: 5%;
+	width:90%	
 }
-
 #notes li {
-	margin: 15px;
-	float: left;
+	margin:2%;
+	float:left;
 	position: relative;
+	width:22%;
+	height:100%;
 }
-
 #notes  li div {
 	text-decoration: none;
 	color: #000;
 	background: #ffc;
+	width:100%;
+	height:100%;
 	display: block;
-	height: 250px;
-	width: 210px;
-	padding: 10px;
+	padding: 2%;
 	-moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
 	-webkit-box-shadow: 5px 5px 7px  rgba(33, 33, 33, .7);
 	box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
 	-moz-transition: -moz-transform .15s linear;
 	-o-transition: -o-transform .15s linear;
 	-webkit-transition: -webkit-transform .15s linear;
-	border-radius:5px;
+	border-radius:3%;
 	border:none;
 }
 #notes  li div img {
-	padding: 1px 3px;
-	margin: 10px; 
+	padding: 1% 2%;
+	margin: 3%; 
 	position: absolute; 
 	top: 0; 
 	right: 0;
 }
 #notes  li textarea {
-	font-family: 'Chewy', arial, sans-serif;
+	font-family: Georgia,arial, sans-serif;
 	background: rgba(0, 0, 0, 0); /* transparent background */
 	resize: none;
-	padding: 3px;
+	padding: 1%;
 	border-style: none;
+	width : 100%
 }
-
-.note-title {
+.book-name{
 	font-size: 100%;
-	font-weight: bold;
-	height: 30px;
+	font-weight:bold;
+	height: 4%;
+	width: 70%;
+}
+.note-title {
+	font-size: 90%;
+	font-weight:bold;
+	height: 4%;
 	width: 70%;
 }
 
 .note-content {
-	font-size:90%;
-	height: 100px;
+	font-size:100%;
+	height: 55%;
 	width: 95%;
+}
+.page-no{
+	height: 5%;
+}
+.creation-date{
+	font-size: 70%;
+	height: 10%;
 }
 
 #notes li:nth-child(even) div {  
@@ -114,14 +110,11 @@ body{
 }
 
 #notes li div.colour1 {
-	background-color: #fff4b3;
+	background-color: #ffc;
 }
 #notes li div.colour2 {
-	background: #b3d1ff;
+	background: #cfc;
 }
 #notes li div.colour3 {
-	background:  #e6e6ff;
+	background: #ccf;
 }
-
-
-//just test

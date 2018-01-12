@@ -1,10 +1,12 @@
 
 body{
 	margin:0px;
-	color:#290652;
-	background:url(../img/inside-an-empty-library-background.webp) no-repeat center;
+	color:#cfc3dd;
+	background:url(../img/lib3.jpg) no-repeat center;
 	font:600 18px/40px 'Open Sans',sans-serif;
-	height: 100%;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	
 }
 
 
@@ -24,9 +26,9 @@ body{
 	
 	width:60%;
 	height:100%;
-	color: wheat;
+	color: rgb(6, 1, 51);
 	padding:90px 70px 50px 70px;
-	background:rgba(14, 23, 46, 0.9);
+	background:rgba(145, 53, 250, 0.267);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -178,7 +180,7 @@ body{
 
 
 div.gallery {
-    margin: 50px;
+    margin: 60px;
     border: 1px solid rgb(245, 223, 223);
     float: left;
 	width: 280px;
