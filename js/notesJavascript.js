@@ -83,7 +83,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
 				"<textarea class='note-content' placeholder='Your content here:'/>" + 
 				"<textarea class='page-no' placeholder='pageNo' maxlength='3' disabled/>" + 
 				"<textarea class='creation-date'disabled>"+creationDate+"</textarea>" + 
-				"<img class='hide' src='img/Delete_Icon.png' height=30 width=30 />" +	
+				"<img class='hide' src='img/Delete_Icon.png' height=20 width=20 />" +	
 				"</div></li>");
 
 	var newNote = notes.find("li:last");

@@ -11,10 +11,11 @@ body{
 }
 #notes li {
 	margin:2%;
+	padding:.5%;
 	float:left;
 	position: relative;
-	width:22%;
-	height:100%;
+	width:19%;
+	height:55%;
 }
 #notes  li div {
 	text-decoration: none;
@@ -51,13 +52,13 @@ body{
 .book-name{
 	font-size: 100%;
 	font-weight:bold;
-	height: 4%;
+	height: 2%;
 	width: 70%;
 }
 .note-title {
 	font-size: 90%;
 	font-weight:bold;
-	height: 4%;
+	height: 2%;
 	width: 70%;
 }
 
@@ -67,11 +68,11 @@ body{
 	width: 95%;
 }
 .page-no{
-	height: 5%;
+	height: 4%;
 }
 .creation-date{
 	font-size: 70%;
-	height: 10%;
+	height: 12%;
 }
 
 #notes li:nth-child(even) div {  
