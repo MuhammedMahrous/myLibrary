@@ -97,7 +97,7 @@ a.saveShelf {
 .modal-wrapper.open {
   opacity: 1;
   visibility: visible;
-  z-index: 110;
+  z-index: 70;
 }
 
 .modal {

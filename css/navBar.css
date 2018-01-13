@@ -64,7 +64,7 @@ h1 {
   height: 27px;
   width: 35px;
   cursor: pointer;
-  z-index: 100;
+  z-index: 50;
   -webkit-transition: opacity .25s ease;
   transition: opacity .25s ease;
 }
