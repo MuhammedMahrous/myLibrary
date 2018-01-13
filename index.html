@@ -1,85 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <script  src="js/data.js"></script>
-        <script  src="js/login.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <meta charset="utf-8" />
-        <title>LogIn</title>
-        <link rel="icon" href="img/Open_Book-512.png" >
-  </head>
-  <body>
+
+<head>
+  <script src="js/data.js"></script>
+  <script src="js/login.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta charset="utf-8" />
+  <title>LogIn</title>
+  <link rel="icon" href="img/Open_Book-512.png">
+</head>
+
+<body>
 
 
 
 
-    <div class="login-wrap">
-      <div class="login-html">
-        <input onclick="show_login()" id="tab-1" type="radio" name="tab" class="sign-in" checked=""><label for="tab-1" class="tab">Sign In</label>
-        <input onclick="show_reg()" id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-        <div class="login-form">
-          <div class="sign-in-htm">
-              <form action="home.html" class="form-module">
+  <div class="login-wrap">
+    <div class="login-html">
+      <input onclick="show_login()" id="tab-1" type="radio" name="tab" class="sign-in" checked="">
+      <label for="tab-1" class="tab">Sign In</label>
+      <input onclick="show_reg()" id="tab-2" type="radio" name="tab" class="sign-up">
+      <label for="tab-2" class="tab">Sign Up</label>
+      <div class="login-form">
+        <div class="sign-in-htm">
+          <form action="home.html" class="form-module">
 
             <div class="group">
-              <label for="username_log" class="label" >Username</label>
-              <input id="username_log" type="text" class="input" required >
+              <label for="username_log" class="label">Username</label>
+              <input id="username_log" type="text" class="input" required>
             </div>
             <div class="group">
               <label for="userpassword_log" class="label">Password</label>
-              <input id="userpassword_log" type="password" class="input" data-type="password" required  >
-			  <label id="login_status" class"label"></label>
+              <input id="userpassword_log" type="password" class="input" data-type="password" required>
+              <label id="login_status" class "label"></label>
             </div>
             <div hidden class="group">
               <input id="check" type="checkbox" class="check" checked="">
-              <label for="check"><span class="icon"></span> Keep me Signed in</label>
+              <label for="check">
+                <span class="icon"></span> Keep me Signed in</label>
             </div>
             <div class="group">
-              <input type="button" onclick="show_login();check_action()"  class="button" value="Sign In">
+              <input type="button" onclick="show_login();check_action()" class="button" value="Sign In">
             </div>
             <div class="hr"></div>
-            <div  class="foot-lnk">
+            <div class="foot-lnk">
               <a href="#forgot">Forgot Password?</a>
             </div>
-            </form>
-          </div>
-
-
-          <div  id="reg_div"  class="sign-up-htm" >
-            <form action="shelfs.html" onsubmit="check_action()" >
-             <div class="group">
-               <label class="label">username</label>
-               <input class="input"  id="username" type="text" placeholder="username"  required pattern="[a-zA-Z].{0,}" title="just keep use a letter in the begining a to z">
-
-             </div>
-             <div class="group">
-               <label class="label">password</label>
-               <input class="input"  id="userpassword" type="password" placeholder="password" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters">
-             </div>
-             <div class="group">
-               
-               <label class="label">email</label>
-              <input class="input"  id="useremail" type="email" placeholder="email"  required title="">
-             </div>
-
-             <div class="group"> 
-               <label class="label">phone number</label>
-               <input class="input"  id="userphone" type="text" placeholder="phone" required pattern="^01[0125]{1}\d{8}$" title="Must contain Egyption Mobile Number ">
-             </div>
-             
-               <div class="group">
-               <input type="submit" class="button" value="Sign Up" >
-              </div>
-              </form>
-         </div>
-         
-
+          </form>
         </div>
+
+
+        <div id="reg_div" class="sign-up-htm">
+          <form action="shelfs.html" onsubmit="check_action()">
+            <div class="group">
+              <label class="label">username</label>
+              <input class="input" id="username" type="text" placeholder="username" required pattern="[a-zA-Z].{0,}" title="just keep use a letter in the begining a to z">
+
+            </div>
+            <div class="group">
+              <label class="label">password</label>
+              <input class="input" id="userpassword" type="password" placeholder="password" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters">
+            </div>
+            <div class="group">
+
+              <label class="label">email</label>
+              <input class="input" id="useremail" type="email" placeholder="email" required title="">
+            </div>
+
+            <div class="group">
+              <label class="label">phone number</label>
+              <input class="input" id="userphone" type="text" placeholder="phone" required pattern="^01[0125]{1}\d{8}$" title="Must contain Egyption Mobile Number ">
+            </div>
+
+            <div class="group">
+              <input type="submit" class="button" value="Sign Up">
+            </div>
+          </form>
+        </div>
+
+
       </div>
     </div>
+  </div>
 
-      
-<!-- add comment to test git -->
 
-  </body>
-</html> 
+  <!-- add comment to test git -->
+
+</body>
+
+</html>
