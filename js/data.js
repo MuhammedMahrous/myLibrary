@@ -409,3 +409,7 @@ function setCurrentBookTitle(viewedTitle) {
         return false;
     }
 }
+
+function goBack(){
+    window.history.back();
+}
