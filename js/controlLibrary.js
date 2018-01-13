@@ -81,7 +81,8 @@ function handleFileSelect(evt) {
             var output = `<div id="bID` + bookAdded.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
             <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
             + bookAdded.title + `" onclick="removeBook(this);"></i>
-            <img src="img/book-image.png" alt="`+bookAdded.title+`" id="btnView` + bookAdded.title + `" onclick="viewBook(this);">    
+            <img src="img/book-image.png" alt="`+bookAdded.title+`" id="btnView` + bookAdded.title + `" onclick="viewBook(this);">  
+            <span class="bookTitleStyle">` + bookAdded.title + `</span>  
             </div>`
             
             //invokeSaveAsDialog(file, file.name); // force download book to the folder of the Project /Books "Make it manually"
