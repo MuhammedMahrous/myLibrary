@@ -55,7 +55,7 @@ function handleFileSelect(evt) {
 
     } else {
         files = evt.dataTransfer.files; // FileList object.sss
-
+        shelfTitle = shelfTitle.replace("sh_","");
     }
 
 
@@ -108,7 +108,7 @@ function handleFileSelect(evt) {
 
             //invokeSaveAsDialog(file, file.name); // force download book to the folder of the Project /Books "Make it manually"
         }*/
-    }
+        
     if (evt.dataTransfer == undefined) {
         document.getElementById("sh_" + shelfTitle).onchange = handleFileSelect;
         document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
@@ -116,6 +116,7 @@ function handleFileSelect(evt) {
         document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
 
     }
+}
 
     //Working on for animation when added elemnt
     /*for (var fadeCounter = 0; fadeCounter < files.length; fadeCounter++) {

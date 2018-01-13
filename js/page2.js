@@ -1,5 +1,5 @@
 var currentUser = getCurrentUser();
-var shelfs = getShlefs(currentUser);
+var shelfs; //= getShlefs(currentUser);
 //logout function related with log_out_btn
 function log_out_btn() {
     var empty = "yggygygygyggy";
@@ -13,8 +13,11 @@ function log_out_btn() {
 
 function checkShelfs(currentUser) {
     var msg = "No Shelfes Created";
-    if (!shelfs)
-        document.getElementById("p2").innerHTML = msg;
+    if (!shelfs){
+    	document.getElementById("p2").innerHTML = msg;
+    	document.getElementById("p2").style.display = "block";
+    }
+    
 
 }
 
@@ -22,7 +25,9 @@ function checkShelfs(currentUser) {
 
 function fillShelfs() {
     if (validateUsername()) {
-        for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
+
+    	shelfsUser = getShlefs(currentUser);
+        for (var index = 0; index < shelfsUser.length; index++) { // Draw each shelf
             var shelf = shelfs[index];
             $("#shelfsContainer").append(function (n) {
 
@@ -91,6 +96,7 @@ function addshelf() {
 
                 $('.modal-wrapper').toggleClass('open'); //hide the modal
                 $('.page-wrapper').toggleClass('blur'); //remove the blur
+    			document.getElementById("p2").style.display = "none"; //remove the temp text
 
                 // var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
                 //     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
@@ -176,6 +182,8 @@ function dialog(msg) {
 
 
 $(document).ready(function () {
+
+    shelfs = getShlefs(currentUser);
     checkShelfs();
     $('.trigger').click(function () {
         $('.modal-wrapper').toggleClass('open');
