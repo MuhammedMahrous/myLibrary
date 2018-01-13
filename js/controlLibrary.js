@@ -64,7 +64,9 @@ function handleFileSelect(evt) {
     for (var i = 0; i < files.length; i++) {
         file = files[i];
         if (!file.type.match('pdf')) { //check the type of the file droped
-            alert("Only PDF files are allowed !");
+            var msg="Only PDF files are allowed !";
+			dialog(msg);
+		   // alert("Only PDF files are allowed !");
             continue;
         }
         var bookAdded = {
@@ -79,8 +81,9 @@ function handleFileSelect(evt) {
 
             //invokeSaveAsDialog(file, file.name); // force download book to the folder of the Project /Books "Make it manually"
         } else {
-            alert("Book alrady added !");
-
+            //alert("Book alrady added !");
+				var msg="Book alrady added !";
+			dialog(msg);
         }
 
         /*if (shelf.books.length > 0) { //check if there is any books in shelf and not a dublicate
@@ -156,6 +159,32 @@ function handleDragOver(evt) {
     evt.preventDefault();
     evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 }
+
+function dialog ( msg ) {
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+document.getElementById("msg").innerHTML= msg;
+
+ modal.style.display = "block";
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+ }}
 
 
 // Setup the dnd listeners.
