@@ -1,14 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Vollkorn|Roboto);
 body {
-  background: #F5F5F5;
+	background-image: url("../img/lib3.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size: 100% 100%;
+}
+.bachgroundLayer{
+
 }
 
 .container {
   position: absolute;
   width: 100%;
-  heigh: 100%;
+  height: 100%;
   text-align: center;
-  top: 40%;
   left: 0;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
@@ -25,6 +30,9 @@ body {
   font-size: 20px;
   overflow: hidden;
   top: 5px;
+}
+.container.close{
+	visibility: hidden;
 }
 .container a:after {
   content: '';
@@ -52,7 +60,7 @@ h1 {
 .button_container {
   position: fixed;
   top: 5%;
-  right: 2%;
+  left: 2%;
   height: 27px;
   width: 35px;
   cursor: pointer;
@@ -113,6 +121,7 @@ h1 {
   opacity: .9;
   visibility: visible;
   height: 100%;
+  z-index: 10;
 }
 .overlay.open li {
   -webkit-animation: fadeInRight .5s ease forwards;
