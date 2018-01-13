@@ -16,7 +16,7 @@ function gText(event) {
     if (selectedText != "") {
         selectEvent = event;
         popUpNote(selectedText);
-        
+
     }
 
 }
@@ -34,7 +34,7 @@ function popUpNote(selectedText) {
     console.log("popUpNote");
     var modal = document.getElementById('noteModal');
     var text = document.getElementById('noteText');
-    text.value =(selectEvent.ctrlKey) ? (text.value+selectedText): selectedText;
+    text.value = (selectEvent.ctrlKey) ? (text.value + selectedText) : selectedText;
     //selectedText='';
     if (selectedPageNumber == '') {
         var element = selectEvent.target.parentElement;
@@ -73,12 +73,12 @@ function popUpNote(selectedText) {
 
     // When the user clicks anywhere outside of the modal, close it
     // comminted if needed
-//    window.onclick = function(event) {
-//        if (event.target == modal) {
-//            modal.style.display = "none";
-//            selectedPageNumber='';
-//        }
-//    };
+    //    window.onclick = function(event) {
+    //        if (event.target == modal) {
+    //            modal.style.display = "none";
+    //            selectedPageNumber='';
+    //        }
+    //    };
 
 
 }
@@ -86,27 +86,34 @@ function popUpNote(selectedText) {
 function saveNote() {
     selectedText = '';
     var modal = document.getElementById('noteModal');
-    var date =  Date.now();
-    var id = getCurrentUser()+date;
+    // #MAHROUS_COMMENTED
+    //var date =  Date.now();
+    // #MAHROUS_COMMENTED
+
+    // // #MAHROUS_ADDED
+     var mydate = new Date();
+     var date = mydate.toISOString();
+    // // #MAHROUS_ADDED
+
+    var id = getCurrentUser() + date;
     var finalNoteText = document.getElementById('noteText').value;
     var noteTitle = document.getElementById('noteTitle').value;
-    var bookTitle= getCurrentBookTitle();
+    var bookTitle = getCurrentBookTitle();
     noteCreater = getCurrentUser();
-    noteObj={
-        "id":id,
-        "bookTitle":bookTitle,
+    noteObj = {
+        "id": id,
+        "bookTitle": bookTitle,
         "pageNo": selectedPageNumber,
         "noteTitle": noteTitle,
         "content": finalNoteText,
         "dateOf": date,
         "Class": "colourClass"
-        
+
     }
     setNote(noteObj, getCurrentUser())
     modal.style.display = "none";
     selectedPageNumber = '';
-    document.getElementById('noteTitle').value='';
+    document.getElementById('noteTitle').value = '';
 
 
 }
-
