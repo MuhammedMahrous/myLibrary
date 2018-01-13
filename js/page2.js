@@ -44,7 +44,7 @@ function fillShelfs() {
                     </h1>
                     <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute">
                     <i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                    <div class="book-wrapper"></div>
+                    
                 </div>`;
                 return shelfDiv;
             });
@@ -58,7 +58,7 @@ function fillShelfs() {
             shelf.books.forEach(book => { // Fill the shelfs with books 
                 // var output = `<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>`;
                 
-                var output = `
+                var output = `<div id="bID` + book.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
                 <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">    
@@ -108,7 +108,7 @@ function addshelf() {
                 </h1>
                 <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute">
                 <i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                <div class="book-wrapper"></div>
+                
             </div>`;
 
                     return shelf;
