@@ -11,7 +11,14 @@ function saveNotes() {
         var content = $(e).find("textarea.note-content");
         var cDate = $(e).find("textarea.creation-date");
         var userName =  getCurrentUser();
-        var note_id = userName+cDate.val();
+
+        // YOU CAN'T REFORM IT LIKE THIS
+        // var tempD = new Date(cDate.val());
+        // var tempDISO = tempD.toISOString();
+        //  var note_id = userName+tempDISO;
+        var note_id = e.id;
+        var usrn = getCurrentUser();
+        var tempDate = note_id.replace(usrn,"");
         /* #ADDED-MAHROUS */
         /* 
             Instead of directly adding note to local storage, the data API is
@@ -25,7 +32,7 @@ function saveNotes() {
             pageNo: pNo.val(),
             noteTitle: title.val(),
             content: content.val(),
-            dateOf: cDate.val(),
+            dateOf: tempDate,
             Class: colourClass
         });
         /* #ADDED-MAHROUS */
@@ -71,8 +78,10 @@ function addNoteEvent(noteElement) {
 }
 
 function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) {
-    mydate = new Date();
+    mydate = new Date(cDate);
     creationDate = mydate.toISOString();
+    //creationDate = cDate;
+    
     userName =  getCurrentUser();
     if (!className) {
         className = "colour" + Math.ceil(Math.random() * 3);
@@ -82,7 +91,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
                 "<textarea class='note-title' placeholder='Enter Title:' maxlength='10' disabled/>" + 
                 "<textarea class='note-content' placeholder='Your content here:'/>" + 
                 "<textarea class='page-no' placeholder='pageNo' maxlength='3' disabled/>" + 
-                "<textarea class='creation-date'disabled>"+creationDate+"</textarea>" + 
+                "<textarea class='creation-date'disabled>"+mydate+"</textarea>" + 
                 "<img class='hide' src='img/Delete_Icon.png' height=20 width=20 />" +   
                 "</div></li>");
 
@@ -96,21 +105,20 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
         newNote.find("textarea.note-title").val(noteTitle);
     }
     if (content) {
-        j
         newNote.find("textarea.note-content").val(content);
     }
     if (pageNo) {
         newNote.find("textarea.page-no").val(pageNo);
     }
     if (cDate) {
-        newNote.find("textarea.creation-date").val(cDate);
+        newNote.find("textarea.creation-date").val(mydate);
     }
     newNote.find("img").click(function () {
         deleteNoteById(newNote.find("div")[0].id); 
         newNote.remove();
         saveNotes();
     });
-    saveNotes();
+     saveNotes();
 }
 
 //loading notes from json file  
@@ -138,7 +146,7 @@ function loadNotes() {
     //this loop to reset notes id after delete one
     for (i = 0; i < count; i++) {
         var storedNote = notesArray[i];
-        addNewNote(i, storedNote.Class, storedNote.bookTitle, storedNote.pageNo, storedNote.noteTitle, storedNote.Content, storedNote.dateOf);
+        addNewNote(i, storedNote.Class, storedNote.bookTitle, storedNote.pageNo, storedNote.noteTitle, storedNote.content, storedNote.dateOf);
 
     }
     /* #COMMENTED-MAHROUS */

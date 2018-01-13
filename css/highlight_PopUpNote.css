@@ -1,34 +1,78 @@
+/* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 5px; /* Location of the box */
+    /*padding: 10px;  Location of the box */
     left: 0;
     top: 0;
-    margin-left: 30% ;
-    margin-right: 30% ;
-    margin-top: 5% ;
-    width: 40%; /* Full width */
-    height: 40%; /* Full height */
+    margin-left:33%;
+    margin-top:5%;
+    width: 23%; /* Full width */
+    height: 42%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    /*    background-color: rgb(0,0,0);  Fallback color 
+        background-color: rgba(0,0,0,0.4);  Black w/ opacity */
+    border-radius:10px;
+    border:none;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px lightskyblue;
 }
 
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
+
+    /*margin: auto;*/
+    padding-left: 2%;
+    padding-right: 2%;
     border: 1px solid #888;
-    width: 94%;
-    height: 94%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 96%;
+    height: 100%;
+    background-color: white;
+
+    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    border-radius:10px;
+    border:none;
+
+}
+
+#noteTitle {
+    margin-top: 2%;
+    font-size: 100%;
+    font-weight: bold;
+    height: 20px;
+    width: 70%;
+    resize: none;
+    border: 0px;
+    font-family: 'Chewy', arial, sans-serif;
+    background: white; 
+    border-style: none;  
+}
+::placeholder {
+    color: lightskyblue;
+
+}
+
+#noteText {
+    margin-top: 1%;
+    /*	font-size: 100%;
+            font-weight: bold;*/
+    height: 90%;
+    width: 96%;
+    resize: none;
+    /*border: 0px;*/
+    font-family: 'Chewy', arial, sans-serif;
+    background: rgba(0, 0, 0, 0); 
+    border-radius:10px;
+    padding : 1% 1% 1% 1%;
+
+    border-radius:10px;
+    /*border-style: none;*/
 }
 
 /* Add Animation */
@@ -44,45 +88,74 @@
 
 /* The Close Button */
 .close {
-    color: white;
+    color: #000;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    color: lightskyblue;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: red;
     text-decoration: none;
     cursor: pointer;
 }
+#buttonSave {
+    font-weight: bold;
+    width: 20% ;
+    margin-left: 40%;margin-left: 40%;margin-bottom: 1%;
+    background-color: white;
+    border-style: none;
+    color: lightskyblue;
+}
+
+#buttonSave:hover,#buttonSave:focus {
+    color: skyblue;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px blue;
+}
 
 .modal-header {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+    padding-left: 2%;
+    padding-right:2%;
+    padding-top: 2%;
+    background-color: white;
+    color: white;   
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+    padding-left: 2%;
+    padding-right:2%;
+    padding-top: 2%;
+    height: 72%;
+    width: 96% ;
+    background-color: white;
+    border-radius:10px;
+
+}
+
 
 .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
+    float: bottom;
+
+    padding-left: 2%;
+    padding-right:2%;
+    padding-top: 2%;
+    background-color: white;
     color: white;
 }
 
-
-
-            #noteModal {
-                -webkit-box-sizing:border-box;
-                -moz-box-sizing:border-box;
-                -ms-box-sizing:border-box;
-                -o-box-sizing:border-box;
-                box-sizing:border-box;
-                background: #f1f1f1;
-                font-family:helvetica neue, helvetica, arial, sans-serif;
-                font-weight:200;
-            }
+/*#noteModal {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    background: #f1f1f1;
+    font-family:helvetica neue, helvetica, arial, sans-serif;
+    font-weight:200;
+}*/
 
 /*            body {
                 background: #f1f1f1;

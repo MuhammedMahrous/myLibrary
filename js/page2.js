@@ -1,5 +1,5 @@
 var currentUser = getCurrentUser();
-var shelfs = getShlefs(currentUser);
+var shelfs= getShlefs(currentUser);
 //logout function related with log_out_btn
 function log_out_btn() {
     var empty = "yggygygygyggy";
@@ -9,28 +9,43 @@ function log_out_btn() {
 
 
 //Get shelft from DB Temp now
- //returns null at line 322
+//returns null at line 322
 
-function checkShelfs (currentUser)
-{
-			var msg="No Shelfes Created";
-			if(!shelfs)
-				document.getElementById("p2").innerHTML=msg;
-	
+function checkShelfs(currentUser) {
+    var msg = "No Shelfes Created";
+    if (!shelfs){
+    	document.getElementById("p2").innerHTML = msg;
+    	document.getElementById("p2").style.display = "block";
+    }
+    
+
 }
 
 //DRAW SHELFS
 
 function fillShelfs() {
     if (validateUsername()) {
+
+    	//shelfsUser = getShlefs(currentUser);
         for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
             var shelf = shelfs[index];
-            $("#shelfsContainer").append(function(n) {
+            $("#shelfsContainer").append(function (n) {
 
 
                 $("#containerDiv").remove(); //get all the elemnt to delete it
-                var shelfDiv = "<div class='shelfStyle' id='sh_" + shelf.title + "'><text>' " + shelf.title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + shelf.title + "' type='file' name='New Book'><br><br>" +
-                    "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
+                // var shelfDiv = "<div class='shelfStyle' id='sh_" + shelf.title + "'><text>' " + shelf.title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + shelf.title + "' type='file' name='New Book'><br><br>" +
+                //     "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
+
+
+                var shelfDiv = `<div class='shelfStyle bookshelf--frame' id='sh_` + shelf.title + `' class="form-control">
+                    <h1>
+                        <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
+                        float: left;padding: 6px; border-radius: 0px">`+shelf.title+`</span>
+                    </h1>
+                    <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute">
+                    <i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
+                    <div class="book-wrapper"></div>
+                </div>`;
                 return shelfDiv;
             });
             //Add listeners
@@ -41,7 +56,13 @@ function fillShelfs() {
             document.getElementById("sh_" + shelf.title).onchange = handleFileSelect;
 
             shelf.books.forEach(book => { // Fill the shelfs with books 
-                var output = '<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>';
+                // var output = `<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>`;
+                
+                var output = `
+                <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
+                + book.title + `" onclick="removeBook(this);"></i>
+                <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">    
+                </div>`
                 document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
             });
         }
@@ -70,15 +91,27 @@ function addshelf() {
         //CHECK THE TITLE IS UNIQUE
         if (createShlef(currentUser, title)) { //CHECK IF USER IS NOT ""
             var d = new Date();
-            $("#shelfsContainer").append(function(n) {
+            $("#shelfsContainer").append(function (n) {
 
 
                 $('.modal-wrapper').toggleClass('open'); //hide the modal
                 $('.page-wrapper').toggleClass('blur'); //remove the blur
+    			document.getElementById("p2").style.display = "none"; //remove the temp text
 
-                var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
-                    "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
-                return shelf;
+                // var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
+                //     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
+                
+                var shelf = `<div class='shelfStyle bookshelf--frame' id='sh_` + title + `' class="form-control">
+                <h1>
+                    <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
+                    float: left;padding: 6px; border-radius: 0px">`+title+`</span>
+                </h1>
+                <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute">
+                <i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
+                <div class="book-wrapper"></div>
+            </div>`;
+
+                    return shelf;
             });
 
 
@@ -88,15 +121,15 @@ function addshelf() {
 
             var inputBookBtn = document.getElementById("btnNewBook" + title);
             inputBookBtn.addEventListener('change', handleFileSelect);
-       } else {
-			var msg="title exist before";
+        } else {
+            var msg = "title exist before";
             //alert("title exist before");
-			dialog();
+            dialog();
         }
     } else {
-		var msg="title cannot be empty";
-      dialog(msg);
-	   //alert("title cannot be empty");
+        var msg = "title cannot be empty";
+        dialog(msg);
+        //alert("title cannot be empty");
     }
 
 }
@@ -109,9 +142,9 @@ function removeshelf(opj) {
     if (deleteShelf(currentUser, btn_id)) {
         document.getElementById(div_id).remove();
     } else {
-     var msg="Shelf not removed";
-		dialog();
-    	//alert("Shelf not removed");
+        var msg = "Shelf not removed";
+        dialog();
+        //alert("Shelf not removed");
     }
 }
 
@@ -119,37 +152,40 @@ function removeshelf(opj) {
 
 
 // When the user clicks the button, open the modal 
- function dialog ( msg ) {
-var modal = document.getElementById('myModal');
+function dialog(msg) {
+    var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-document.getElementById("msg").innerHTML= msg;
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    document.getElementById("msg").innerHTML = msg;
 
- modal.style.display = "block";
+    modal.style.display = "block";
 
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-	
-    modal.style.display = "none";
-}
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
         modal.style.display = "none";
     }
- }}
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
 
 
 
-$(document).ready(function() {
-     checkShelfs();
-    $('.trigger').click(function() {
+$(document).ready(function () {
+
+    //shelfs = getShlefs(currentUser);
+    checkShelfs();
+    $('.trigger').click(function () {
         $('.modal-wrapper').toggleClass('open');
         $('.page-wrapper').toggleClass('blur');
         $('#new-shelf-input').val("");

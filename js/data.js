@@ -316,7 +316,7 @@ function getShlefs(username) {
 
     if (allShelfs != null) {
         if (allShelfs.length > 0) {
-            var userShelfs = allShelfs.filter(shelf => shelf.username == username);
+            var userShelfs = allShelfs.filter(shelf => shelf.username == username)[0].userShelfs;
             if (userShelfs.length > 0)
                 return userShelfs[0].userShelfs
             else
