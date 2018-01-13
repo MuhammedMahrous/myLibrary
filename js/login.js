@@ -145,8 +145,13 @@ function check_authourity(can_or_cannot) {
     else if (can_or_cannot == "notexist") {
         // alert("notexist_emptyStorage");
         document.getElementById("login_status").style.display="block";
-         document.getElementById("login_status").innerHTML="You Must SignUp First";
-         document.getElementById("login_status").style.color="red";
+         document.getElementById("login_status").innerHTML="SignUp First";
+         document.getElementById("login_status").style.color="wheat";
+         document.getElementById("login_status").style.textAlign="center";
+         document.getElementById("login_status").style.marginTop="9px";
+
+
+
     }
 
     else if (can_or_cannot == "notexistuserINstorage") {

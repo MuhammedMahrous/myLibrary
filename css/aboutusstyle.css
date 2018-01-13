@@ -1,14 +1,13 @@
+
 body{
 	margin:0px;
-	color:#6a6f8c;
-	background:#111c54;
-	font:600 16px/18px 'Open Sans',sans-serif;
+	color:#cfc3dd;
+	background:url(../img/lib3.jpg) no-repeat center;
+	font:600 18px/40px 'Open Sans',sans-serif;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	
 }
-*,:after,:before{-webkit-box-sizing:border-box;box-sizing:border-box}
-.clearfix:after,.clearfix:before{content:'';display:table}
-.clearfix:after{clear:both;display:block}
-a{color:inherit;text-decoration:none}
-
 
 
 .login-wrap{
@@ -17,15 +16,19 @@ a{color:inherit;text-decoration:none}
 	max-width:525px;
 	min-height:670px;
 	position:relative;
+	background:url(../img/inside-an-empty-library-background.webp) no-repeat center;
 	-webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 	        box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-html{
-	width:100%;
+	margin:0 auto;
+	text-align: center;
+	
+	width:60%;
 	height:100%;
-	position:absolute;
+	color: rgb(6, 1, 51);
 	padding:90px 70px 50px 70px;
-	background:rgba(40,57,101,.9);
+	background:rgba(145, 53, 250, 0.267);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -161,4 +164,39 @@ a{color:inherit;text-decoration:none}
 }
 .foot-lnk{
 	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.gallery {
+    margin: 60px;
+    border: 1px solid rgb(245, 223, 223);
+    float: left;
+	width: 280px;
+	height: 140px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
 }

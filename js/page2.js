@@ -1,5 +1,5 @@
 var currentUser = getCurrentUser();
-var shelfs = getShlefs(currentUser);
+var shelfs= getShlefs(currentUser);
 //logout function related with log_out_btn
 function log_out_btn() {
     var empty = "yggygygygyggy";
@@ -13,8 +13,11 @@ function log_out_btn() {
 
 function checkShelfs(currentUser) {
     var msg = "No Shelfes Created";
-    if (!shelfs)
-        document.getElementById("p2").innerHTML = msg;
+    if (!shelfs){
+    	document.getElementById("p2").innerHTML = msg;
+    	document.getElementById("p2").style.display = "block";
+    }
+    
 
 }
 
@@ -22,6 +25,8 @@ function checkShelfs(currentUser) {
 
 function fillShelfs() {
     if (validateUsername()) {
+
+    	//shelfsUser = getShlefs(currentUser);
         for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
             var shelf = shelfs[index];
             $("#shelfsContainer").append(function (n) {
@@ -39,7 +44,7 @@ function fillShelfs() {
                     </h1>
                     <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute">
                     <i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                    <div class="book-wrapper"></div>
+                    
                 </div>`;
                 return shelfDiv;
             });
@@ -53,7 +58,7 @@ function fillShelfs() {
             shelf.books.forEach(book => { // Fill the shelfs with books 
                 // var output = `<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>`;
                 
-                var output = `<div id="bID` + book.title + `" class="book-wrapper">
+                var output = `<div id="bID` + book.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
                 <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">    
@@ -91,6 +96,7 @@ function addshelf() {
 
                 $('.modal-wrapper').toggleClass('open'); //hide the modal
                 $('.page-wrapper').toggleClass('blur'); //remove the blur
+    			document.getElementById("p2").style.display = "none"; //remove the temp text
 
                 // var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
                 //     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
@@ -102,7 +108,7 @@ function addshelf() {
                 </h1>
                 <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute">
                 <i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                <div class="book-wrapper"></div>
+                
             </div>`;
 
                     return shelf;
@@ -176,6 +182,8 @@ function dialog(msg) {
 
 
 $(document).ready(function () {
+
+    //shelfs = getShlefs(currentUser);
     checkShelfs();
     $('.trigger').click(function () {
         $('.modal-wrapper').toggleClass('open');

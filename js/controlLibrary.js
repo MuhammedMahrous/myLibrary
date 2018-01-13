@@ -55,7 +55,7 @@ function handleFileSelect(evt) {
 
     } else {
         files = evt.dataTransfer.files; // FileList object.sss
-
+        shelfTitle = shelfTitle.replace("sh_","");
     }
 
 
@@ -78,7 +78,7 @@ function handleFileSelect(evt) {
         if (setBook(currentUser, shelfTitle.replace("sh_", ""), bookAdded)) { // RETURNS AN ERROR
             //shelf.books.push(bookAdded); // add book to books array in the selected shelf if there is old books
             // output += '<div id="bID' + bookAdded.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + bookAdded.title + '</b></h4><button id="btnRem' + bookAdded.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + bookAdded.title + '" onclick="viewBook(this);">View</button></div></div>';
-            var output = `<div id="bID` + bookAdded.title + `" class="book-wrapper">
+            var output = `<div id="bID` + bookAdded.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
             <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
             + bookAdded.title + `" onclick="removeBook(this);"></i>
             <img src="img/book-image.png" alt="`+bookAdded.title+`" id="btnView` + bookAdded.title + `" onclick="viewBook(this);">    
@@ -108,7 +108,7 @@ function handleFileSelect(evt) {
 
             //invokeSaveAsDialog(file, file.name); // force download book to the folder of the Project /Books "Make it manually"
         }*/
-    }
+        
     if (evt.dataTransfer == undefined) {
         document.getElementById("sh_" + shelfTitle).onchange = handleFileSelect;
         document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
@@ -116,6 +116,7 @@ function handleFileSelect(evt) {
         document.getElementById("sh_" + shelfTitle).innerHTML += output; //added new book item to the list
 
     }
+}
 
     //Working on for animation when added elemnt
     /*for (var fadeCounter = 0; fadeCounter < files.length; fadeCounter++) {
