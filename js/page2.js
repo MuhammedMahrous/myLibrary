@@ -61,7 +61,8 @@ function fillShelfs() {
                 var output = `<div id="bID` + book.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
-                <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">    
+                <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">
+                <span class="bookTitleStyle">` + book.title + `</span>    
                 </div>`
                 document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
             });
