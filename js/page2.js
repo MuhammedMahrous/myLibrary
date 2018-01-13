@@ -1,5 +1,5 @@
 var currentUser = getCurrentUser();
-var shelfs; //= getShlefs(currentUser);
+var shelfs= getShlefs(currentUser);
 //logout function related with log_out_btn
 function log_out_btn() {
     var empty = "yggygygygyggy";
@@ -26,8 +26,8 @@ function checkShelfs(currentUser) {
 function fillShelfs() {
     if (validateUsername()) {
 
-    	shelfsUser = getShlefs(currentUser);
-        for (var index = 0; index < shelfsUser.length; index++) { // Draw each shelf
+    	//shelfsUser = getShlefs(currentUser);
+        for (var index = 0; index < shelfs.length; index++) { // Draw each shelf
             var shelf = shelfs[index];
             $("#shelfsContainer").append(function (n) {
 
@@ -58,7 +58,7 @@ function fillShelfs() {
             shelf.books.forEach(book => { // Fill the shelfs with books 
                 // var output = `<div id="bID' + book.title + '" class="card"> <img src="img/book-image.png" alt="Conver" class="bookCard"> <div class="container"> <h4><b>' + book.title + '</b></h4><button id="btnRem' + book.title + '" onclick="removeBook(this);">Remove</button><button id="btnView' + book.title + '" onclick="viewBook(this);">View</button></div></div>`;
                 
-                var output = `<div id="bID` + book.title + `" class="book-wrapper">
+                var output = `
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
                 <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">    
@@ -183,7 +183,7 @@ function dialog(msg) {
 
 $(document).ready(function () {
 
-    shelfs = getShlefs(currentUser);
+    //shelfs = getShlefs(currentUser);
     checkShelfs();
     $('.trigger').click(function () {
         $('.modal-wrapper').toggleClass('open');
