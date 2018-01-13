@@ -62,7 +62,8 @@ function fillShelfs() {
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
                 <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">
-                <span class="bookTitleStyle">` + book.title + `</span>    
+                <span class="bookTitleStyle" onclick="document.getElementById('btnView` + book.title +`').click()">` + book.title.split('_').join(' ') + `</span>  
+                
                 </div>`
                 document.getElementById("sh_" + shelf.title).innerHTML += output; //added new book item to the list
             });
@@ -123,15 +124,11 @@ function addshelf() {
             var inputBookBtn = document.getElementById("btnNewBook" + title);
             inputBookBtn.addEventListener('change', handleFileSelect);
         } else {
-            var msg = "title exist before";
-            //alert("title exist before");
-            dialog();
+            dialog("title exist before");
         }
     } else {
-        var msg = "title cannot be empty";
-        dialog(msg);
-        //alert("title cannot be empty");
-    }
+        dialog("title cannot be empty");
+        }
 
 }
 
@@ -143,9 +140,8 @@ function removeshelf(opj) {
     if (deleteShelf(currentUser, btn_id)) {
         document.getElementById(div_id).remove();
     } else {
-        var msg = "Shelf not removed";
-        dialog();
-        //alert("Shelf not removed");
+        
+        dialog("Shelf not removed");
     }
 }
 
@@ -153,7 +149,7 @@ function removeshelf(opj) {
 
 
 // When the user clicks the button, open the modal 
-function dialog(msg) {
+function dialog(msgBody) {
     var modal = document.getElementById('myModal');
 
     // Get the button that opens the modal
@@ -161,7 +157,7 @@ function dialog(msg) {
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    document.getElementById("msg").innerHTML = msg;
+    document.getElementById("msg").innerHTML = msgBody;
 
     modal.style.display = "block";
 

@@ -66,6 +66,7 @@
   			color: #fff;
     		text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
     		font-weight: bold;
+    		cursor: pointer;
 
        }
     </style>
@@ -74,8 +75,8 @@
 
 <body onload="fillShelfs()">
     <div class="bg">
-        <div class="login-html">
-            <p style="font-size:100px; text-align:center; color:LightGray;display:none" id="p2"></p>
+            <p style="font-size:100px; text-align:center; color:LightGray;display:none;top: 30%;
+                    position: fixed;margin-left: 15%;" id="p2"></p>
             <div class="button_container" id="toggle" onclick="displayButton(this)">
                 <span class="top"></span>
                 <span class="middle"></span>
@@ -131,7 +132,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
     <script src="js/controlLibrary.js"></script>
 

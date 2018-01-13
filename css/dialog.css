@@ -43,13 +43,16 @@ body, html {
 
 .bg {
     /* The image used */
-    background-image: url("lib3.jpg");
+    /*background-image: url("lib3.jpg");
 
     min-height: 100%;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center;*/
+    background: url(img/lib3.jpg) no-repeat center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     /* Full height */
     
     /* Center and scale the image nicely */
@@ -62,7 +65,7 @@ body, html {
     height: 100%;*/
 	
 }
-.login-html{
+/*.login-html{
 	width:100%;
 	height:100%;
 	position:absolute;
@@ -72,4 +75,4 @@ body, html {
     background-repeat: no-repeat;
     background-position: center center;*/
 	background:rgba(0, 0, 0,.5);
-}
+}*/
