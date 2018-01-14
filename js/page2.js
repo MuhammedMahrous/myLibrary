@@ -42,9 +42,9 @@ function fillShelfs() {
                         <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
                         float: left;padding: 6px; border-radius: 0px">`+shelf.title+`</span>
                     </h1>
-                    <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute">
+                    <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute;color:white;">
                     <i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                    
+                    <div style="height: 290px;width:5px;display: inline-block;"></div>
                 </div>`;
                 return shelfDiv;
             });
@@ -108,9 +108,9 @@ function addshelf() {
                     <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
                     float: left;padding: 6px; border-radius: 0px">`+title+`</span>
                 </h1>
-                <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute">
+                <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute;color:white;">
                 <i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                
+                <div style="height: 290px;width:5px;display: inline-block;"></div>
             </div>`;
 
                     return shelf;

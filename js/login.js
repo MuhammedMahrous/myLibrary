@@ -139,13 +139,15 @@ function check_authourity(can_or_cannot) {
     else if (can_or_cannot == "cannot") {
          // alert("wrongpass");
          document.getElementById("login_status").style.display="block";
-         document.getElementById("login_status").innerHTML="Invalid Password";
-         document.getElementById("login_status").style.color="red";
+         document.getElementById("login_status").innerHTML="Incorrect Data";
+                  document.getElementById("login_status").style.textAlign="center";
+
+         document.getElementById("login_status").style.color="wheat";
     }
     else if (can_or_cannot == "notexist") {
         // alert("notexist_emptyStorage");
         document.getElementById("login_status").style.display="block";
-         document.getElementById("login_status").innerHTML="SignUp First";
+         document.getElementById("login_status").innerHTML="Incorrect Data";
          document.getElementById("login_status").style.color="wheat";
          document.getElementById("login_status").style.textAlign="center";
          document.getElementById("login_status").style.marginTop="9px";
@@ -157,8 +159,9 @@ function check_authourity(can_or_cannot) {
     else if (can_or_cannot == "notexistuserINstorage") {
         //alert("notexistuser_INstorage");
         document.getElementById("login_status").style.display="block";
-        document.getElementById("login_status").innerHTML="Invalid UserName";
-        document.getElementById("login_status").style.color="red";
+        document.getElementById("login_status").innerHTML="Incorrect Data";
+                 document.getElementById("login_status").style.textAlign="center";
+        document.getElementById("login_status").style.color="wheat";
     }
 
 }
