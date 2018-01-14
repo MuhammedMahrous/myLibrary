@@ -61,7 +61,7 @@ function fillShelfs() {
                 var output = `<div id="bID` + book.title + `" class="book-wrapper" style="height: 240px;margin-top: 40px;">
                 <i class='fa fa-remove fa-3x deletebtn' style='float: right; color:white;' id="btnRem`    
                 + book.title + `" onclick="removeBook(this);"></i>
-                <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" onclick="viewBook(this);">
+                <img src="img/book-image.png" alt="`+book.title+`" id="btnView` + book.title + `" style="cursor: pointer;" onclick="viewBook(this);">
                 <span class="bookTitleStyle" onclick="document.getElementById('btnView` + book.title +`').click()">` + book.title.split('_').join(' ') + `</span>  
                 
                 </div>`
