@@ -1,5 +1,5 @@
 var window_opened = "";
-
+//deleteCurrentUser();
 var users_array = new Array();
 
 // used in check authority function to be passed to data.js to set it to current user
@@ -27,6 +27,8 @@ function show_reg() {
 //(just as design)this function uses to show the inputs of login and hidden the others
 function show_login() {
     window_opened = "login";
+
+       document.getElementById("signup_status").innerHTML="";
 
 
 }
@@ -79,9 +81,12 @@ function check_action() {
             //stringfy convert from 
             localStorage["user_storage"] = JSON.stringify(users_array);
             setCurrentUser(username);
+            //check_authourity("can");
+            //return true;
 
         } else {
             var msg="userName Used before";
+            cant_sign_up();
 			return false;
             dialog(msg);
 
@@ -239,3 +244,11 @@ window.onclick = function(event) {
     }
  }}
 
+function cant_sign_up()
+{
+         document.getElementById("signup_status").style.display="block";
+         document.getElementById("signup_status").innerHTML="Duplicated User";
+         document.getElementById("signup_status").style.color="wheat";
+         document.getElementById("signup_status").style.textAlign="center";
+         document.getElementById("signup_status").style.marginTop="9px";
+}
