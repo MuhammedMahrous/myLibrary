@@ -75,7 +75,7 @@ a.saveShelf {
   padding: 0.5em;
   font-weight: 200;
   width: 100px;
-  background-color: #00A7FF;
+  background-color: #ad3232;
   float: right;
 }
 
@@ -85,7 +85,7 @@ a.saveShelf {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(255, 257, 153, 0.75);
+  background: rgba(255, 255, 255, 0.75);
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 0.25s ease-in-out;
@@ -126,7 +126,7 @@ a.saveShelf {
   height: 32px;
   padding: 1.5em 5%;
   overflow: hidden;
-  background: #4EEC6C;
+  background: #ad3232;
 }
 
 .modal-title-text {

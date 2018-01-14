@@ -87,7 +87,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
         className = "colour" + Math.ceil(Math.random() * 3);
     }
     notes.append("<li><div id='"+userName+creationDate+"'class='" + className + "'>" + 
-                "<textarea class='book-name' placeholder='Book Name' maxlength='15' disabled/>" + 
+                "<textarea class='book-name' placeholder='Book Name' maxlength='15' />" + 
                 "<textarea class='note-title' placeholder='Enter Title:' maxlength='10' disabled/>" + 
                 "<textarea class='note-content' placeholder='Your content here:'/>" + 
                 "<textarea class='page-no' placeholder='pageNo' maxlength='3' disabled/>" + 
@@ -100,6 +100,10 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
     addNoteEvent(newNote);
     if (bookTitle) {
         newNote.find("textarea.book-name").val(bookTitle);
+        newNote.find("textarea.book-name").click(function(){
+        	 window.location = '../web/viewer.html?bookName=' + newNote.find("textarea.book-name").val() + '&bookPage=' 
+        	 + newNote.find("textarea.page-no").val();
+        })
     }
     if (noteTitle) {
         newNote.find("textarea.note-title").val(noteTitle);
@@ -108,7 +112,7 @@ function addNewNote(i, className, bookTitle, pageNo, noteTitle, content, cDate) 
         newNote.find("textarea.note-content").val(content);
     }
     if (pageNo) {
-        newNote.find("textarea.page-no").val(pageNo);
+        newNote.find("textarea.page-no").val( pageNo);
     }
     if (cDate) {
         newNote.find("textarea.creation-date").val(mydate);
