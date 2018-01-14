@@ -1,29 +1,23 @@
 # My Library
-This application helps the  
+With this application helps users with keeping track of their books, each user will have the ability to create shelfs, and add PDF books to the shelfs, Can read books using PDF.js open source library from Mozilla, and take notes by selecting any text in the books, and viewing all his notes in the notes section and go to the page by clicking the note was written before.
+
 ## Installation
 
-TODO: Describe the installation process
+No installation is required.
 
 ## Usage
 
-TODO: Write usage instructions
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## History
-
-TODO: Write history
+To use this app you need to run an pplication server to host it, since the PDF.js library requires running from a service;
+it won't work using the File system (opening the files directly on the browser).
+We recommend to install http-server node package using $npm install -g http-server then running $http-server in the main application
+directory 
 
 ## Credits
 
-TODO: Write credits
-
-## License
-
-TODO: Write license
+1.	Ahmad Ehab
+2.	Ahmad Nagib
+3.	Ahmad Sobhy
+4.	Al-Romaisaa Hussien
+5.	Dina Ghounem
+6.	Muhamed Mahrous
+A special thanks to the pdf.js open source community.
