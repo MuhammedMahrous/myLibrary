@@ -42,8 +42,10 @@ function fillShelfs() {
                         <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
                         float: left;padding: 6px; border-radius: 0px">`+shelf.title+`</span>
                     </h1>
-                    <input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute;color:white;">
-                    <i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
+                    <label class="custom-file-upload">
+					<input id='btnNewBook` +shelf.title + `' type='file' name='New Book' style="position: absolute;color:white;">
+					<i class="fa fa-plus-square-o fa-4x" style="margin-left: 10%;color: rgb(154, 133, 72);"></i>
+</label><i class='fa fa-remove fa-5x deletebtn' id='`+shelf.title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
                     <div style="height: 290px;width:5px;display: inline-block;"></div>
                 </div>`;
                 return shelfDiv;
@@ -104,14 +106,16 @@ function addshelf() {
                 //     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
                 
                 var shelf = `<div class='shelfStyle bookshelf--frame' id='sh_` + title + `' class="form-control">
-                <h1>
-                    <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
-                    float: left;padding: 6px; border-radius: 0px">`+title+`</span>
-                </h1>
-                <input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute;color:white;">
-                <i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
-                <div style="height: 290px;width:5px;display: inline-block;"></div>
-            </div>`;
+                    <h1>
+                        <span class="badge badge-default" style="background-color: rgb(154, 133, 72);
+                        float: left;padding: 6px; border-radius: 0px">`+title+`</span>
+                    </h1>
+                    <label class="custom-file-upload">
+					<input id='btnNewBook` +title + `' type='file' name='New Book' style="position: absolute;color:white;">
+					<i class="fa fa-plus-square-o fa-4x" style="margin-left: 10%;color: rgb(154, 133, 72);"></i>
+</label><i class='fa fa-remove fa-5x deletebtn' id='`+title+`' style='float: right; color:white;' onclick='removeshelf(this)'></i>
+                    <div style="height: 290px;width:5px;display: inline-block;"></div>
+                </div>`;
 
                     return shelf;
             });
