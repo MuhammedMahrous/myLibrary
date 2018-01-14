@@ -82,7 +82,9 @@ function check_action() {
 
         } else {
             var msg="userName Used before";
-			dialog(msg);
+			return false;
+            dialog(msg);
+
             //alert("userName Used before");
         }
     }
