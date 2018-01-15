@@ -315,7 +315,7 @@ function getShlefs(username) {
     var allShelfs = JSON.parse(localStorage.getItem("shelfs"));
 
     if (allShelfs != null) {
-        if (allShelfs.length > 0) {
+        if (allShelfs.length > 0 && allShelfs.filter(shelf => shelf.username == username)[0] != undefined ) {
             var userShelfs = allShelfs.filter(shelf => shelf.username == username)[0].userShelfs;
             if (userShelfs.length > 0)
                 return userShelfs
