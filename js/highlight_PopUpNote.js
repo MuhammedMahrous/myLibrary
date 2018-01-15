@@ -31,7 +31,7 @@ if (!document.all)
 //pop up note
 
 function popUpNote(selectedText) {
-    console.log("popUpNote");
+   // console.log("popUpNote");
     var modal = document.getElementById('noteModal');
     var text = document.getElementById('noteText');
     text.value = (selectEvent.ctrlKey) ? (text.value + selectedText) : selectedText;
@@ -43,21 +43,21 @@ function popUpNote(selectedText) {
             elementList.unshift(element);
             element = element.parentElement;
 
-            console.log('the node is ----> : ', element);
+          //  console.log('the node is ----> : ', element);
             if (element.getAttribute("class") == "page") {
-                console.log('the page num : ', selectedPageNumber);
+                //console.log('the page num : ', selectedPageNumber);
                 selectedPageNumber = element.getAttribute("data-page-number");
                 break;
             }
 
             // this break to privent an error when loop get to element "html or body"
             if (element.getAttribute("id") == "mainContainer") {
-                console.log('the node id  is ////> : mainContainer');
+                //console.log('the node id  is ////> : mainContainer');
                 break;
             }
         }
-        console.log('the arr : ', elementList);
-        console.log('the page num : ', selectedPageNumber);
+       // console.log('the arr : ', elementList);
+       // console.log('the page num : ', selectedPageNumber);
     }
 
     // Get the <span> element that closes the modal

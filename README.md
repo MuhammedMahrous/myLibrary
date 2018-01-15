@@ -9,8 +9,9 @@ No installation is required.
 
 To use this app you need to run an pplication server to host it, since the PDF.js library requires running from a service;
 it won't work using the File system (opening the files directly on the browser).
-We recommend to install http-server node package using $npm install -g http-server then running $http-server in the main application
-directory 
+We recommend to install http-server node package using $npm install -g http-server then running $http-server in the main application directory .
+
+After adding a book to a shelf, the books itself must be moved manually to Books folder inside main project directory ( “/Books” ).
 
 ## Credits
 
@@ -20,4 +21,6 @@ directory
 4.	Al-Romaisaa Hussien
 5.	Dina Ghounem
 6.	Muhamed Mahrous
-A special thanks to the pdf.js open source community.
+
+## Thanks
+A special thanks to the PDF.js open source community.

@@ -33,9 +33,7 @@ function fillShelfs() {
 
 
                 $("#containerDiv").remove(); //get all the elemnt to delete it
-                // var shelfDiv = "<div class='shelfStyle' id='sh_" + shelf.title + "'><text>' " + shelf.title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + shelf.title + "' type='file' name='New Book'><br><br>" +
-                //     "<img class='deletebtn' id='" + shelf.title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
-
+              
 
                 var shelfDiv = `<div class='shelfStyle bookshelf--frame' id='sh_` + shelf.title + `' class="form-control">
                     <h1>
@@ -75,18 +73,6 @@ function fillShelfs() {
     }
 }
 
-//Shows the note creation
-/*function addtitle() {
-    //if ($("li".length = 0)) { //Only create on shlef at a time
-    $("#creationContainer").append(function(n) {
-        var note = "<div id='containerDiv' class='addShelfReq'><textarea class='note-title' id='t1' placeholder='title' maxlength='50'></textarea><br>" +
-            "<img class='hide' id='img1' src='img/close_pic.png' height=30 width=30 /><img class='hide' id='imgSave1' src='img/Check_mark.png' height=30 width=30 style='float: right;' /></div>";
-        return note;
-
-    });
-
-    //}
-}*/
 
 function addshelf() {
     var title = document.getElementById('new-shelf-input').value;
@@ -102,8 +88,6 @@ function addshelf() {
                 $('.page-wrapper').toggleClass('blur'); //remove the blur
     			document.getElementById("p2").style.display = "none"; //remove the temp text
 
-                // var shelf = "<div class='shelfStyle' id='sh_" + title + "'><text>' " + title + "'</text><br><label> Add new book.</label><input id='btnNewBook" + title + "' type='file' name='New Book'><br><br>" +
-                //     "<img class='deletebtn' id='" + title + "' src='img/close_pic.png' height=30 width=30 style='float: right;'onclick='removeshelf(this)' /></div>";
                 
                 var shelf = `<div class='shelfStyle bookshelf--frame' id='sh_` + title + `' class="form-control">
                     <h1>
@@ -195,19 +179,5 @@ $(document).ready(function () {
 
     $('.saveShelf').click(addshelf);
 
-    /*$("#show").click(function() {
-
-        addtitle();
-
-
-        $("#img1").click(function() {
-
-            $("#containerDiv").remove();
-        });
-        $("#imgSave1").click(function() {
-            addshelf();
-
-        });
-
-    });*/
+    
 });

@@ -29,10 +29,7 @@
                 //navigate to the desired page
                 PDFViewerApplication.initialBookmark = "page=" + desiredPage;
                 setCurrentBookTitle(bookNamePure)  //save book to the local storage
-                    //console.log("Current book title saved");
-                /*} else {
-                    //console.log("Error to save the Current book title");
-                }*/
+                   
 
                 //console.log(PDFViewerApplication);
             });
